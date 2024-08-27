@@ -3,31 +3,19 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="DarkBlue">#212B4F</Color>
-    <Color x:Key="LightBlue">#8A8BA6</Color>
+    <Color x:Key="LightestBlue">#7CE9F4</Color>
+    <Color x:Key="LightBlue">#58D9EE</Color>
+    <Color x:Key="LowSatLightBlue">#19BCE2</Color>
+    <Color x:Key="LowSatDarkBlue">#0F95CD</Color>
+    <Color x:Key="LowSatLightGreen">#0D5BB3</Color>
 
-    <Color x:Key="GrayGreen">#ABCABD</Color>
-    <Color x:Key="LowSatDarkGreen">#6CA089</Color>
-    <Color x:Key="LowSatLightGreen">#C2F5DF</Color>
-    <Color x:Key="SlateGreen">#3C755C</Color>
-    <Color x:Key="DarkGreen">#1A4B36</Color>
-    <Color x:Key="DarkestGreen">#093321</Color>
-
-    <Style Class="DarkGreen" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource LowSatDarkGreen}"/>
-    </Style>
-
-    <Style Class="LightGreen" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource LowSatLightGreen}"/>
-    </Style>
-
-    <Style Class="Header" TargetType="Label">
+    <Style Class="Header">
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="FontSize" Value="Title"/>
         <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 
-    <Style Class="SubHeader" TargetType="Label">
+    <Style Class="SubHeader">
         <Setter Property="FontSize" Value="Medium"/>
         <Setter Property="VerticalOptions" Value="Center"/>
     </Style>

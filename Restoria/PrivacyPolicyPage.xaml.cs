@@ -1,9 +1,9 @@
 ﻿namespace Restoria
 {
-    public partial class MainPage : ContentPage
+    public partial class PrivacyPolicyPage : ContentPage
     {
 
-        public MainPage()
+        public PrivacyPolicyPage()
         {
             InitializeComponent();
         }

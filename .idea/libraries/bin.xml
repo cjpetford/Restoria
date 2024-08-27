@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Restoria/obj/Debug/net8.0-android/android/bin/classes.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Restoria/obj/Debug/net8.0-android/android/bin/mono.android.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

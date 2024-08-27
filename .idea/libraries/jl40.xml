@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jl40">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Restoria/obj/Debug/net8.0-android/lp/132/jl/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Restoria/obj/Debug/net8.0-android/lp/132/jl/res.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
