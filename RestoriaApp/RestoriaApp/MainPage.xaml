@@ -3,28 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RestoriaApp.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+    <!-- Main layout grid -->
+    <Grid>
+        <!-- Top bar -->
+        <Grid RowDefinitions="Auto,*">
+            <!-- Profile icon and menu -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+            <!-- Welcome text -->
+            <StackLayout Padding="10,50,10,10">
+                <Label Text="Welcome back, placeholder_role  placeholder_name"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+        </Grid>
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+        <!-- Bottom navigation bar -->
+        <Grid RowDefinitions="*,Auto">
+            <!-- Spacer -->
+            <Grid Row="0"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+            <!-- Navigation bar -->
+            <Grid Row="1" BackgroundColor="White" Padding="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" 
+                        ImageSource="dashboard_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="CornflowerBlue"/>
+
+                <Button Grid.Column="1" 
+                        ImageSource="doctors_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="PaleTurquoise"/>
+
+                <Button Grid.Column="2" 
+                        ImageSource="schedule_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="PaleTurquoise"/>
+
+                <Button Grid.Column="3" 
+                        ImageSource="profile_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="PaleTurquoise"/>
+            </Grid>
+        </Grid>
+    </Grid>
 
 </ContentPage>
