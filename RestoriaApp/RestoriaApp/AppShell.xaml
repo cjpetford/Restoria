@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="RestoriaApp.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:RestoriaApp"
-    Shell.FlyoutBehavior="Disabled"
-    Title="RestoriaApp">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:RestoriaApp"
+       x:Class="RestoriaApp.AppShell">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <!-- Define a TabBar -->
+    <TabBar>
+        <!-- Dashboard Tab -->
+        <Tab Title="Dashboard" Icon="dashboard_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" />
+        </Tab>
+
+        <!-- Doctors Tab -->
+        <Tab Title="Doctors" Icon="doctors_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DoctorsPage}" />
+        </Tab>
+
+        <!-- Schedule Tab -->
+        <Tab Title="Schedule" Icon="schedule_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SchedulePage}" />
+        </Tab>
+
+        <!-- Profile Tab -->
+        <Tab Title="Profile" Icon="profile_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>

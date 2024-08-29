@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestoriaApp.MainPage">
+             x:Class="RestoriaApp.DoctorsPage">
 
     <!-- Main layout grid -->
     <Grid>
@@ -44,7 +44,8 @@
                         VerticalOptions="Center"
                         WidthRequest="85"
                         HeightRequest="85"
-                        BackgroundColor="CornflowerBlue"/>
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Dashboard_Button"/>
 
                 <Button Grid.Column="1" 
                         ImageSource="doctors_icon.png" 
@@ -52,7 +53,8 @@
                         VerticalOptions="Center"
                         WidthRequest="85"
                         HeightRequest="85"
-                        BackgroundColor="PaleTurquoise"/>
+                        BackgroundColor="CornflowerBlue"
+                        Clicked="Doctors_Button"/>
 
                 <Button Grid.Column="2" 
                         ImageSource="schedule_icon.png" 
@@ -60,7 +62,8 @@
                         VerticalOptions="Center"
                         WidthRequest="85"
                         HeightRequest="85"
-                        BackgroundColor="PaleTurquoise"/>
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Schedule_Button"/>
 
                 <Button Grid.Column="3" 
                         ImageSource="profile_icon.png" 
@@ -68,7 +71,8 @@
                         VerticalOptions="Center"
                         WidthRequest="85"
                         HeightRequest="85"
-                        BackgroundColor="PaleTurquoise"/>
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Profile_Button"/>
             </Grid>
         </Grid>
     </Grid>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestoriaApp.SchedulePage">
+
+    <!-- Main layout grid -->
+    <Grid>
+        <!-- Top bar -->
+        <Grid RowDefinitions="Auto,*">
+            <!-- Profile icon and menu -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <!-- Welcome text -->
+            <StackLayout Padding="10,50,10,10">
+                <Label Text="Welcome back, placeholder_role  placeholder_name"
+                       FontSize="18"
+                       FontAttributes="Bold"/>
+            </StackLayout>
+        </Grid>
+
+        <!-- Bottom navigation bar -->
+        <Grid RowDefinitions="*,Auto">
+            <!-- Spacer -->
+            <Grid Row="0"/>
+
+            <!-- Navigation bar -->
+            <Grid Row="1" BackgroundColor="White" Padding="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" 
+                        ImageSource="dashboard_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Dashboard_Button"/>
+
+                <Button Grid.Column="1" 
+                        ImageSource="doctors_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Doctors_Button"/>
+
+                <Button Grid.Column="2" 
+                        ImageSource="schedule_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="CornflowerBlue"
+                        Clicked="Schedule_Button"/>
+
+                <Button Grid.Column="3" 
+                        ImageSource="profile_icon.png" 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="85"
+                        HeightRequest="85"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Profile_Button"/>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

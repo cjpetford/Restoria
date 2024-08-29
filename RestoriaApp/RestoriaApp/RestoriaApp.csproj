@@ -62,4 +62,20 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="DoctorsPage.xaml.cs">
+	    <DependentUpon>DoctorsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="DashboardPage.xaml.cs">
+	    <DependentUpon>DashboardPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+  <MauiXaml Update="AppShell.xaml" />
+  <MauiXaml Update="DoctorsPage.xaml" />
+  <MauiXaml Update="ProfilePage.xaml" />
+  <MauiXaml Update="SchedulePage.xaml" />
+</ItemGroup>
+
 </Project>
