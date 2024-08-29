@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="restoria.LoginPage"
+             Title="LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="restoriaa.png" Aspect="AspectFit" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent" />
+
+        <VerticalStackLayout Grid.Row="1" Spacing="10">
+
+            <Label Text="Log In To Restoria" FontSize="20" TextColor="Black" FontAttributes="Bold" Margin="0,0,0,20" HorizontalOptions="Center"/>
+
+            <Label Text="Email"/>
+
+            <Entry Placeholder="youremail@domain.com" Keyboard="Email" />
+
+            <Label Text="Password"/>
+
+            <Entry Placeholder="Password" IsPassword="True"/>
+
+            <Label HorizontalOptions="CenterAndExpand" Margin="190,10,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Forgot Password?" TextColor="#7d87f1"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ForgotPassword"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button Text="Log In" TextColor="Black" BackgroundColor="#7ce9f4" Margin="0,10,0,0" Command="{Binding ICommandNavToHomePage}"/>
+
+            <Label HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="New User? " TextColor="Gray"/>
+                        <Span Text="Create Account" TextColor="#7d87f1"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

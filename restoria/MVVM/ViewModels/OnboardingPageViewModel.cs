@@ -1,0 +1,70 @@
+﻿using System;
+using System.Windows.Input;
+using restoria.MVVM.ViewModels.Base;
+
+namespace restoria.MVVM.ViewModels
+{
+    public class OnboardingPageViewModel : BaseViewModel
+    {
+        private List<string> onboardingList;
+        private int position = 0;
+
+        public List<string> OnboardingList
+        {
+            get => onboardingList;
+            set
+            {
+                if (onboardingList == value) return;
+                onboardingList = value;
+                OnPropertyChanged(nameof(OnboardingList));
+            }
+        }
+
+        public int Position
+        {
+            get => position;
+            set
+            {
+                if (position == value) return;
+                position = value;
+                OnPropertyChanged(nameof(Position));
+            }
+        }
+
+
+        public ICommand ICommandNavToLoginPage { get; set; }
+
+        public OnboardingPageViewModel()
+        {
+            onboardingList = [];
+            ICommandNavToLoginPage = new Command(() => NavigateToLoginPage());
+            InitilizeOnboardingList();
+            CarouselRotateService();
+        }
+
+        private static void NavigateToLoginPage()
+        {
+            Application.Current?.MainPage?.Navigation.PushAsync(new LoginPage());
+        }
+
+        private void InitilizeOnboardingList()
+        {
+            OnboardingList.Add("untitled4.png");
+            OnboardingList.Add("untitled4.png");
+            OnboardingList.Add("untitled4.png");
+            OnboardingList.Add("untitled4.png");
+        }
+
+        private async void CarouselRotateService()
+        {
+            if (OnboardingList != null && OnboardingList.Count != 0)
+            {
+                using var timer = new PeriodicTimer(TimeSpan.FromSeconds(5));
+                while (await timer.WaitForNextTickAsync())
+                {
+                    Position = (Position + 1) % OnboardingList.Count;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="restoria.MVVM.Views.Register"
+             Title="Register"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Source="restoriaa.png" Aspect="AspectFit" HeightRequest="100" HorizontalOptions="Center" VerticalOptions="Center" />
+
+        <VerticalStackLayout Grid.Row="1" Spacing="10">
+
+            <Label Text="Sign Up" FontSize="20" TextColor="Black" FontAttributes="Bold" Margin="0,0,0,20"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="First Name"/>
+
+            <Entry Placeholder="Enter First Name" Keyboard="Email" />
+
+            <Label Text="Last Name"/>
+
+            <Entry Placeholder="Enter Last Name" Keyboard="Email" />
+
+            <Button Text="Next" BackgroundColor="#7ce9f4" Margin="0,10,0,0" Clicked="ProceedSignUp"/>
+
+            <Label HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Existing User? " TextColor="Gray"/>
+                        <Span Text="Sign In" TextColor="#7d87f1"
+                  TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnExistingUserTapped"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
