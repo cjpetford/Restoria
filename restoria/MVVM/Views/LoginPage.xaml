@@ -19,11 +19,11 @@
 
             <Label Text="Email"/>
 
-            <Entry Placeholder="youremail@domain.com" Keyboard="Email" />
+            <Entry x:Name="emailEntry" Placeholder="youremail@domain.com" Keyboard="Email" />
 
             <Label Text="Password"/>
 
-            <Entry Placeholder="Password" IsPassword="True"/>
+            <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="True"/>
 
             <Label HorizontalOptions="CenterAndExpand" Margin="190,10,0,0">
                 <Label.FormattedText>

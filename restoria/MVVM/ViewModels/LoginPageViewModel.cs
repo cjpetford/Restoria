@@ -1,24 +1,41 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using restoria.MVVM.Views;
 using restoria.MVVM.ViewModels.Base;
-using restoria.MVVM.ViewModels;
 
 namespace restoria.MVVM.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
-        public ICommand ICommandNavToHomePage { get; set; }
+        private readonly DatabaseService _database;
 
-        public LoginPageViewModel()
+        public LoginPageViewModel(DatabaseService database)
         {
-            ICommandNavToHomePage = new Command(() => NavigateToHomePage());
+            _database = database;
         }
 
-        private static void NavigateToHomePage()
+        public ICommand ICommandNavToHomePage => new Command(async () =>
         {
-            Application.Current?.MainPage?.Navigation.PushAsync(new HomePage());
-        }
+            var user = await _database.GetUserByEmailAndPasswordAsync("sample@example.com", "password");
+
+            if (user != null)
+            {
+                if (user.Role == "Admin")
+                {
+                    // Navigate to Admin Page
+                    await Application.Current.MainPage.Navigation.PushAsync(new AdminPage());
+                }
+                else
+                {
+                    // Navigate to Home Page
+                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+                }
+            }
+            else
+            {
+                // Show error
+                await Application.Current.MainPage.DisplayAlert("Login Failed", "Invalid credentials", "OK");
+            }
+        });
+
     }
 }
-

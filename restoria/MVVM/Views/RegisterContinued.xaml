@@ -21,7 +21,7 @@
 
             <Label Text="Email Address"/>
 
-            <Entry Placeholder="name@example.com" Keyboard="Email" />
+            <Entry x:Name="emailEntry" Placeholder="name@example.com" Keyboard="Email" />
 
             <Label Text="Contact Number"/>
 
@@ -38,7 +38,7 @@
             <!-->
             <Label Text="Set Password"/>
 
-            <Entry Placeholder="********" IsPassword="True" />
+            <Entry x:Name="passwordEntry" Placeholder="********" IsPassword="True" />
 
             <Label Text="Captcha"/>
 

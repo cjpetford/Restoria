@@ -1,14 +1,35 @@
-namespace restoria.MVVM.Views;
+using restoria.MVVM.Models;
+using restoria.MVVM.Views;
+using restoria.MVVM.ViewModels;
 
-public partial class RegisterContinued : ContentPage
+namespace restoria.MVVM.Views
 {
-    public RegisterContinued()
+    public partial class RegisterContinued : ContentPage
     {
-        InitializeComponent();
-    }
+        private User _user;
 
-    private async void OnExistingUserTapped(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LoginPage());
+        public RegisterContinued(User user)
+        {
+            InitializeComponent();
+            _user = user;
+
+            // Use _user.FirstName and _user.LastName as needed
+        }
+
+        private async void OnExistingUserTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
+        private async void OnRegisterButtonClicked(object sender, EventArgs e)
+        {
+            _user.Email = emailEntry.Text;
+            _user.Password = passwordEntry.Text;
+
+            var databaseService = new DatabaseService();
+            await databaseService.AddUserAsync(_user);
+
+            // Navigate or show success message
+        }
     }
 }
