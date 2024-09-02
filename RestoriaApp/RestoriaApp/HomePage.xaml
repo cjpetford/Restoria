@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            x:Class="RestoriaApp.DashboardPage">
+            x:Class="RestoriaApp.HomePage">
 
     <!-- Dashboard Page Tab -->
     <ContentPage Title="Home">
@@ -140,14 +140,23 @@
                 <Grid RowDefinitions="*,Auto,*">
                     <!-- Spacer -->
                     <Grid Row="0"/>
-
-                    <!-- Navigation bar -->
-                    <StackLayout Padding="10,50,10,10">
-                        <Label Text="Welcome back, placeholder_role placeholder_name"
-                   FontSize="18"
-                   FontAttributes="Bold"
-                   TranslationY="55"/>
-                    </StackLayout>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding Doctors}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Frame WidthRequest="200">
+                                        <VerticalStackLayout Padding="15" Spacing="10">
+                                            <Label StyleClass="RoyalBlue" Text="{Binding DoctorRole}"/>
+                                            <Label StyleClass="DarkBlue,CardTitle" Text="{Binding DoctorQualification}"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </Grid>
             </Grid>
         </Grid>

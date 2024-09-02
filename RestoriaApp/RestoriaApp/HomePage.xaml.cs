@@ -2,9 +2,9 @@
 
 namespace RestoriaApp
 {
-    public partial class DashboardPage : TabbedPage
+    public partial class HomePage : TabbedPage
     {
-        public DashboardPage()
+        public HomePage()
         {
             InitializeComponent();
         }
