@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="restoria.MVVM.Views.BookingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:restoria.MVVM.Views"
+    mc:Ignorable="d">
+
+    <Grid Padding="30,40,20,20">
+        <VerticalStackLayout>
+            <Label Grid.Row="1" Text="BOOK NOW" HorizontalOptions="Center"/>
+            <VerticalStackLayout Grid.Row="2" Padding="0,0,0,0">
+                <Label Text="Doctor's Name" HorizontalOptions="Start"/>
+                <Picker Title="Select a Doctor"
+                        ItemsSource="{Binding DoctorOptions}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedDoctor, Mode=TwoWay}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2">
+                <Label Text="Select a date"/>
+                <DatePicker x:Name="datePicker" Date="{Binding SelectedDate}" Format="d"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3">
+                <Label Text="Select a time"/>
+                <TimePicker x:Name="timePicker" Time="{Binding SelectedTime}" Format="HH:mm"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="4" Margin="5">
+                <Button WidthRequest="300" Text="BOOK NOW"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="5" Margin="5">
+                <Button WidthRequest="300" Text="CANCEL"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

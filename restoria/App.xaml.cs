@@ -1,4 +1,6 @@
-﻿namespace restoria;
+﻿using restoria.MVVM.Views;
+
+namespace restoria;
 
 public partial class App : Application
 {
@@ -6,7 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new OnboardingPage());
+		MainPage = new NavigationPage(new BookingPage());
 	}
 }
 
