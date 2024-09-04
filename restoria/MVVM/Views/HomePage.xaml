@@ -1,65 +1,316 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="restoria.MVVM.Views.HomePage"
-             Title="HomePage"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#7d87f1">
-    <Grid Padding="30,40,20,20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="restoria.HomePage">
 
-        <VerticalStackLayout Grid.Row="0">
+    <!-- Dashboard Page Tab -->
+    <ContentPage Title="Home">
+        <Grid>
+            <!-- Main layout grid -->
+            <Grid>
+                <!-- Top bar -->
+                <Grid RowDefinitions="Auto,*">
+                    <!-- Profile icon and menu -->
+                    <Grid>
+                        <Grid Row="0" BackgroundColor="White" Padding="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-            <Label Text="Restoria" TextColor="White" FontSize="32" FontAttributes="Bold" FontFamily="LatoRegular"
-                VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,10"/>
+                            <Button Grid.Column="0"
+                                ImageSource="home_icon.png"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="84"
+                                HeightRequest="84"
+                                BackgroundColor="CornflowerBlue"
+                                Clicked="Dashboard_Button"/>
 
-            <Label Text="Simple Scheduling" TextColor="White" FontSize="28" FontAttributes="Bold" FontFamily="LatoRegular"
-                VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,10"/>
+                            <Button Grid.Column="1"
+                                ImageSource="doctors_icon.png"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="84"
+                                HeightRequest="84"
+                                BackgroundColor="PaleTurquoise"
+                                Clicked="Doctors_Button"/>
 
-            <Label Text="Better Care" TextColor="White" FontSize="28" FontAttributes="Bold" FontFamily="LatoRegular"
-                VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,10"/>
+                            <Button Grid.Column="2"
+                                ImageSource="schedule_icon.png"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="84"
+                                HeightRequest="84"
+                                BackgroundColor="PaleTurquoise"
+                                Clicked="Schedule_Button"/>
 
-        </VerticalStackLayout>
+                            <Button Grid.Column="3"
+                                ImageSource="profile_icon.png"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="84"
+                                HeightRequest="84"
+                                BackgroundColor="PaleTurquoise"
+                                Clicked="Profile_Button"/>
+                        </Grid>
+                    </Grid>
 
-        <IndicatorView Grid.Row="1" x:Name="indicatorView" IndicatorColor="DimGray"
-            IndicatorsShape="Circle" IndicatorSize="8" Margin="4,10,0,0"
-            SelectedIndicatorColor="LightGray" HorizontalOptions="Start" VerticalOptions="End" />
+                    <!-- Welcome text -->
+                </Grid>
 
-        <CarouselView x:Name="OnboardingCarousel" Grid.Row="2" IndicatorView="indicatorView"
-                      HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"
-                        Margin="0,10,5,90" ItemsSource="{Binding OnboardingList}" Position="{Binding Position,Mode=TwoWay}"
-                     HorizontalScrollBarVisibility="Never">
-            <CarouselView.HeightRequest>
-                <OnIdiom x:TypeArguments="x:Double">
-                    <OnIdiom.Phone>320</OnIdiom.Phone>
-                    <OnIdiom.Tablet>320</OnIdiom.Tablet>
-                </OnIdiom>
-            </CarouselView.HeightRequest>
+                <!-- Bottom navigation bar -->
+                <Grid RowDefinitions="*,Auto,*">
+                    <!-- Spacer -->
+                    <Grid Row="0"/>
 
-            <CarouselView.ItemsLayout>
-                <LinearItemsLayout Orientation="Horizontal" SnapPointsType="MandatorySingle" />
-            </CarouselView.ItemsLayout>
+                    <!-- Navigation bar -->
+                    <StackLayout Padding="10,50,10,10">
+                        <Label Text="Welcome back, placeholder_role placeholder_name"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TranslationY="55"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage>
 
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
+    <ContentPage Title="Doctors">
+        <!-- Main layout grid -->
+        <Grid>
+            <!-- Main layout grid -->
+            <Grid>
+                <!-- Top bar -->
+                <Grid RowDefinitions="Auto,*">
+                    <!-- Profile icon and menu -->
+                    <Grid>
+                        <Grid Row="0" BackgroundColor="White" Padding="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                    <Image Source="{Binding .}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Image.Aspect>
-                            <OnIdiom x:TypeArguments="Aspect">
-                                <OnIdiom.Phone>AspectFit</OnIdiom.Phone>
-                                <OnIdiom.Tablet>AspectFill</OnIdiom.Tablet>
-                            </OnIdiom>
-                        </Image.Aspect>
-                    </Image>
+                            <Button Grid.Column="0"
+                        ImageSource="home_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Dashboard_Button"/>
 
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+                            <Button Grid.Column="1"
+                        ImageSource="doctors_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="CornflowerBlue"
+                        Clicked="Doctors_Button"/>
 
-    </Grid>
-</ContentPage>
+                            <Button Grid.Column="2"
+                        ImageSource="schedule_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Schedule_Button"/>
 
+                            <Button Grid.Column="3"
+                        ImageSource="profile_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Profile_Button"/>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Welcome text -->
+                </Grid>
+
+                <!-- Bottom navigation bar -->
+                <Grid RowDefinitions="*,Auto,*">
+                    <!-- Spacer -->
+                    <Grid Row="0"/>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding Doctors}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Frame WidthRequest="200">
+                                        <VerticalStackLayout Padding="15" Spacing="10">
+                                            <Label StyleClass="RoyalBlue" Text="{Binding Name}"/>
+                                            <Label StyleClass="RoyalBlue" Text="{Binding Role}"/>
+                                            <Label StyleClass="RoyalBlue" Text="{Binding Qualifications}"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage>
+
+    <ContentPage Title="Booking">
+        <!-- Main layout grid -->
+        <Grid>
+            <!-- Main layout grid -->
+            <Grid>
+                <!-- Top bar -->
+                <Grid RowDefinitions="Auto,*">
+                    <!-- Profile icon and menu -->
+                    <Grid>
+                        <Grid Row="0" BackgroundColor="White" Padding="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                        ImageSource="home_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Dashboard_Button"/>
+
+                            <Button Grid.Column="1"
+                        ImageSource="doctors_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Doctors_Button"/>
+
+                            <Button Grid.Column="2"
+                        ImageSource="schedule_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="CornflowerBlue"
+                        Clicked="Schedule_Button"/>
+
+                            <Button Grid.Column="3"
+                        ImageSource="profile_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Profile_Button"/>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Welcome text -->
+                </Grid>
+
+                <!-- Bottom navigation bar -->
+                <Grid RowDefinitions="*,Auto,*">
+                    <!-- Spacer -->
+                    <Grid Row="0"/>
+
+                    <!-- Navigation bar -->
+                    <StackLayout Padding="10,50,10,10">
+                        <Label Text="Welcome back, placeholder_role placeholder_name"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TranslationY="55"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage>
+
+    <ContentPage Title="Profile">
+        <!-- Main layout grid -->
+        <Grid>
+            <!-- Main layout grid -->
+            <Grid>
+                <!-- Top bar -->
+                <Grid RowDefinitions="Auto,*">
+                    <!-- Profile icon and menu -->
+                    <Grid>
+                        <Grid Row="0" BackgroundColor="White" Padding="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                        ImageSource="home_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Dashboard_Button"/>
+
+                            <Button Grid.Column="1"
+                        ImageSource="doctors_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Doctors_Button"/>
+
+                            <Button Grid.Column="2"
+                        ImageSource="schedule_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="PaleTurquoise"
+                        Clicked="Schedule_Button"/>
+
+                            <Button Grid.Column="3"
+                        ImageSource="profile_icon.png"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="84"
+                        HeightRequest="84"
+                        BackgroundColor="CornflowerBlue"
+                        Clicked="Profile_Button"/>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Welcome text -->
+                </Grid>
+
+                <!-- Bottom navigation bar -->
+                <Grid RowDefinitions="*,Auto,*">
+                    <!-- Spacer -->
+                    <Grid Row="0"/>
+
+                    <!-- Navigation bar -->
+                    <StackLayout Padding="10,50,10,10">
+                        <Label Text="Welcome back, placeholder_role placeholder_name"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TranslationY="55"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage>
+
+</TabbedPage>
