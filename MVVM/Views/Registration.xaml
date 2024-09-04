@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="BookingAppRestoria.MVVM.Views.Registration"
+             BackgroundColor="White">
+    <!-- ================================================================ -->
+    <!-- ================ STYLING FOR THIS PAGE FEATURES ================ -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="#0D5BB3"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+            <Setter Property="Margin" Value="0,20,0,-15"/>
+        </Style>
+        <Style x:Key="BodyStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="OpenSansBold"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="Span">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.0"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- =================================================== -->
+    <!-- ================ BACKGROUND COLOUR ================ -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Azure" Offset="0.3" />
+            <GradientStop Color="#7CE9F4" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <!-- ============================================== -->
+    <!-- ================ MAIN CONTENT ================ -->
+    <ScrollView>
+        <Grid Margin="30,20,30,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Image at the top -->
+            <Image Grid.Row="0" Source="logo.png" Aspect="AspectFit" HeightRequest="50" 
+                   HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,10" />
+
+            <!-- Sign Up Form -->
+            <VerticalStackLayout Grid.Row="1" Spacing="15" Padding="5">
+                <Label Text="Register Now" FontSize="24"  Style="{StaticResource TitleStyle}" FontAttributes="Bold" Margin="0,10,0,30"
+                       HorizontalOptions="Center"/>
+
+                <Label Text="First Name" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry x:Name="firstNameEntry" Placeholder="Enter First Name" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Last Name" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry x:Name="lastNameEntry" Placeholder="Enter Last Name" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Email Address" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry x:Name="emailEntry" Placeholder="name@example.com" Keyboard="Email" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Contact Number" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry x:Name="contactEntry"  Placeholder="0800 828282" Keyboard="Telephone" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Date of Birth" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <DatePicker x:Name="dobPicker" Format="D" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Set Password" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry x:Name="passwordEntry1" Placeholder="********" IsPassword="True" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Confirm Password" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry x:Name="passwordEntry2" Placeholder="********" IsPassword="True" FontSize="16"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                <Label Text="Pre-Existing Medical Conditions" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Editor x:Name="conditionEntry" Placeholder="• Asthma &#10;• Diabetes &#10;• High Blood Pressure" FontSize="16" HeightRequest="100"
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AutoSize="TextChanges"/>
+                <Label Text="* Required" TextColor="Red" FontSize="14" Margin="0,-10,0,0"/>
+
+                    <Label Text="Captcha" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Label x:Name="captchaLabel" FontSize="18" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                <Entry x:Name="captchaEntry" Placeholder="Enter Captcha" FontSize="16"/>
+                <Button Text="Refresh Captcha" Clicked="OnRefreshCaptchaClicked" FontSize="18" BackgroundColor="#0F95CD" CornerRadius="10"/>
+
+                
+                <!-- Privacy Policy Checkbox -->
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="5" Margin="0,15,0,0">
+                <CheckBox x:Name="privacyPolicyCheckBox" VerticalOptions="Center">
+                    <!-- DataTriggers for CheckBox -->
+                    <CheckBox.Triggers>
+                        <DataTrigger TargetType="CheckBox" Binding="{Binding IsChecked, Source={x:Reference privacyPolicyCheckBox}}" Value="True">
+                            <Setter Property="Color" Value="Green" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="CheckBox" Binding="{Binding IsChecked, Source={x:Reference privacyPolicyCheckBox}}" Value="False">
+                            <Setter Property="Color" Value="Firebrick" />
+                        </DataTrigger>
+                    </CheckBox.Triggers>
+                </CheckBox>
+
+                <Label FontSize="16" VerticalOptions="Center" Margin="0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PrivacyPolicyTapped"/>
+                    </Label.GestureRecognizers>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="I agree to the " TextColor="Black" FontSize="14"/>
+                            <Span Text="Privacy Policy" TextColor="#0D5BB3" TextDecorations="Underline" FontSize="14"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                </HorizontalStackLayout>
+
+
+                <!-- Terms and Conditions Checkbox -->
+                <HorizontalStackLayout VerticalOptions="Center" Spacing="5" Margin="0,-25,0,0">
+                    <CheckBox x:Name="termsCheckBox" VerticalOptions="Center">
+                        <!-- DataTriggers for CheckBox -->
+                        <CheckBox.Triggers>
+                            <DataTrigger TargetType="CheckBox" Binding="{Binding IsChecked, Source={x:Reference termsCheckBox}}" Value="True">
+                                <Setter Property="Color" Value="Green" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="CheckBox" Binding="{Binding IsChecked, Source={x:Reference termsCheckBox}}" Value="False">
+                                <Setter Property="Color" Value="Firebrick" />
+                            </DataTrigger>
+                        </CheckBox.Triggers>                        
+                    </CheckBox>
+                    
+
+                    <Label FontSize="16" VerticalOptions="Center" Margin="0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TermsTapped"/>
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="I agree to the " TextColor="Black" FontSize="14"/>
+                                <Span Text="Terms and Conditions" TextColor="#0D5BB3" TextDecorations="Underline" FontSize="14"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label> 
+                </HorizontalStackLayout>
+
+                <Button x:Name="signupButton"
+                        Text="Sign Up" 
+                        BackgroundColor="#0D5BB3" 
+                        TextColor="WhiteSmoke" 
+                        FontSize="18" 
+                        CornerRadius="10"
+                        Margin="0,20,0,10" 
+                        Clicked="signupButton_Clicked"/>
+                        <!--Command="{Binding ICommandNavToLogin}"-->
+                       
+
+                <Label HorizontalOptions="Center" Margin="0,0,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Already Have an Account? " 
+                                  TextColor="Gray" FontSize="14"/>
+                            <Span Text="Sign In" TextColor="#0D5BB3" 
+                                  FontSize="14"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <!-- Uncomment and handle the Tapped event for navigation -->
+                                     <TapGestureRecognizer Tapped="OnExistingUserTapped"/> 
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
