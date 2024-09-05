@@ -3,14 +3,14 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="restoria.HomePage">
 
-    <!-- Dashboard Page Tab -->
+    <!-- ~~~~~~~~~~~~~~~~~ DASHBOARD PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
     <ContentPage Title="Home">
         <Grid>
             <!-- Main layout grid -->
             <Grid>
                 <!-- Top bar -->
                 <Grid RowDefinitions="Auto,*">
-                    <!-- Profile icon and menu -->
+                    <!-- Top navigation buttons -->
                     <Grid>
                         <Grid Row="0" BackgroundColor="White" Padding="0,10">
                             <Grid.ColumnDefinitions>
@@ -20,6 +20,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
+                            <!-- Dashboard button -->
                             <Button Grid.Column="0"
                                 ImageSource="home_icon.png"
                                 HorizontalOptions="Center"
@@ -29,6 +30,7 @@
                                 BackgroundColor="CornflowerBlue"
                                 Clicked="Dashboard_Button"/>
 
+                            <!-- Doctors button -->
                             <Button Grid.Column="1"
                                 ImageSource="doctors_icon.png"
                                 HorizontalOptions="Center"
@@ -38,6 +40,7 @@
                                 BackgroundColor="PaleTurquoise"
                                 Clicked="Doctors_Button"/>
 
+                            <!-- Booking button -->
                             <Button Grid.Column="2"
                                 ImageSource="schedule_icon.png"
                                 HorizontalOptions="Center"
@@ -47,6 +50,7 @@
                                 BackgroundColor="PaleTurquoise"
                                 Clicked="Schedule_Button"/>
 
+                            <!-- Profile button -->
                             <Button Grid.Column="3"
                                 ImageSource="profile_icon.png"
                                 HorizontalOptions="Center"
@@ -57,16 +61,13 @@
                                 Clicked="Profile_Button"/>
                         </Grid>
                     </Grid>
-
-                    <!-- Welcome text -->
                 </Grid>
 
-                <!-- Bottom navigation bar -->
                 <Grid RowDefinitions="*,Auto,*">
-                    <!-- Spacer -->
+                    <!-- A Spacer -->
                     <Grid Row="0"/>
 
-                    <!-- Navigation bar -->
+                    <!-- Placeholder text currently -->
                     <StackLayout Padding="10,50,10,10">
                         <Label Text="Welcome back, placeholder_role placeholder_name"
                            FontSize="18"
@@ -77,25 +78,29 @@
             </Grid>
         </Grid>
     </ContentPage>
+    <!-- ~~~~~~~~~~~~~~~~~ DASHBOARD PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
 
+    
+    
+    <!-- ~~~~~~~~~~~~~~~~~ DOCTORS PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
     <ContentPage Title="Doctors">
         <!-- Main layout grid -->
-        <Grid>
-            <!-- Main layout grid -->
+        <Grid
             <Grid>
                 <!-- Top bar -->
                 <Grid RowDefinitions="Auto,*">
-                    <!-- Profile icon and menu -->
-                    <Grid>
-                        <Grid Row="0" BackgroundColor="White" Padding="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                    <!-- Top navigation buttons -->
+                <Grid>
+                    <Grid Row="0" BackgroundColor="White" Padding="0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                            <Button Grid.Column="0"
+                        <!-- Dashboard button -->
+                        <Button Grid.Column="0"
                         ImageSource="home_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -104,7 +109,8 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Dashboard_Button"/>
 
-                            <Button Grid.Column="1"
+                        <!-- Doctors button -->
+                        <Button Grid.Column="1"
                         ImageSource="doctors_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -113,7 +119,8 @@
                         BackgroundColor="CornflowerBlue"
                         Clicked="Doctors_Button"/>
 
-                            <Button Grid.Column="2"
+                        <!-- Booking button -->
+                        <Button Grid.Column="2"
                         ImageSource="schedule_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -122,7 +129,8 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Schedule_Button"/>
 
-                            <Button Grid.Column="3"
+                        <!-- Profile button -->
+                        <Button Grid.Column="3"
                         ImageSource="profile_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -130,17 +138,16 @@
                         HeightRequest="84"
                         BackgroundColor="PaleTurquoise"
                         Clicked="Profile_Button"/>
-                        </Grid>
                     </Grid>
-
-                    <!-- Welcome text -->
                 </Grid>
+            </Grid>
 
                 <Grid RowDefinitions=" 15*, 85*">
-                    <!-- Spacer -->
+                    <!-- A Spacer -->
                     <Grid Row="0"></Grid>
                     <Grid Row="1"/>
                     <ScrollView Grid.Row="1">
+                        <!-- Collection view of all listed doctors, printing their details and whatnot in an orderly scrollable frame layout -->
                     <CollectionView ItemsSource="{Binding Doctors}">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
@@ -167,15 +174,18 @@
             </Grid>
         </Grid>
     </ContentPage>
+    <!-- ~~~~~~~~~~~~~~~~~ DOCTORS PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
 
+    
+    
+    <!-- ~~~~~~~~~~~~~~~~~ BOOKING PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
     <ContentPage Title="Booking">
         <!-- Main layout grid -->
         <Grid>
-            <!-- Main layout grid -->
             <Grid>
                 <!-- Top bar -->
                 <Grid RowDefinitions="Auto,*">
-                    <!-- Profile icon and menu -->
+                    <!-- Top navigation buttons -->
                     <Grid>
                         <Grid Row="0" BackgroundColor="White" Padding="0,10">
                             <Grid.ColumnDefinitions>
@@ -185,6 +195,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
+                            <!-- Dashboard button -->
                             <Button Grid.Column="0"
                         ImageSource="home_icon.png"
                         HorizontalOptions="Center"
@@ -194,6 +205,7 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Dashboard_Button"/>
 
+                            <!-- Doctors button -->
                             <Button Grid.Column="1"
                         ImageSource="doctors_icon.png"
                         HorizontalOptions="Center"
@@ -203,6 +215,7 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Doctors_Button"/>
 
+                            <!-- Booking button -->
                             <Button Grid.Column="2"
                         ImageSource="schedule_icon.png"
                         HorizontalOptions="Center"
@@ -212,6 +225,7 @@
                         BackgroundColor="CornflowerBlue"
                         Clicked="Schedule_Button"/>
 
+                            <!-- Profile button -->
                             <Button Grid.Column="3"
                         ImageSource="profile_icon.png"
                         HorizontalOptions="Center"
@@ -221,15 +235,12 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Profile_Button"/>
                         </Grid>
-                        
                     </Grid>
-
                 </Grid>
 
                 <Grid>
-                    <!-- Spacer -->
+                    <!-- A Spacer -->
                     <Grid Row="0"/>
-                    
                     <StackLayout Padding="10,50,10,10">
                         <VerticalStackLayout TranslationY="55">
                             <Label Grid.Row="1" Text="BOOK NOW" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -257,15 +268,18 @@
             </Grid>
         </Grid>
     </ContentPage>
+    <!-- ~~~~~~~~~~~~~~~~~ BOOKING PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
 
+
+
+    <!-- ~~~~~~~~~~~~~~~~~ PROFILE PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
     <ContentPage Title="Profile">
         <!-- Main layout grid -->
         <Grid>
-            <!-- Main layout grid -->
             <Grid>
                 <!-- Top bar -->
                 <Grid RowDefinitions="Auto,*">
-                    <!-- Profile icon and menu -->
+                    <!-- Top navigation buttons -->
                     <Grid>
                         <Grid Row="0" BackgroundColor="White" Padding="0,10">
                             <Grid.ColumnDefinitions>
@@ -275,6 +289,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
+                            <!-- Dashboard button -->
                             <Button Grid.Column="0"
                         ImageSource="home_icon.png"
                         HorizontalOptions="Center"
@@ -284,6 +299,7 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Dashboard_Button"/>
 
+                            <!-- Doctors button -->
                             <Button Grid.Column="1"
                         ImageSource="doctors_icon.png"
                         HorizontalOptions="Center"
@@ -293,6 +309,7 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Doctors_Button"/>
 
+                            <!-- Booking button -->
                             <Button Grid.Column="2"
                         ImageSource="schedule_icon.png"
                         HorizontalOptions="Center"
@@ -302,6 +319,7 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Schedule_Button"/>
 
+                            <!-- Profile button -->
                             <Button Grid.Column="3"
                         ImageSource="profile_icon.png"
                         HorizontalOptions="Center"
@@ -312,16 +330,13 @@
                         Clicked="Profile_Button"/>
                         </Grid>
                     </Grid>
-
-                    <!-- Welcome text -->
                 </Grid>
 
-                <!-- Bottom navigation bar -->
                 <Grid RowDefinitions="*,Auto,*">
-                    <!-- Spacer -->
+                    <!-- A Spacer -->
                     <Grid Row="0"/>
 
-                    <!-- Navigation bar -->
+                    <!-- Placeholder text -->
                     <StackLayout Padding="10,50,10,10">
                         <Label Text="Welcome back, placeholder_role placeholder_name"
                    FontSize="18"
@@ -332,5 +347,6 @@
             </Grid>
         </Grid>
     </ContentPage>
+    <!-- ~~~~~~~~~~~~~~~~~ PROFILE PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
 
 </TabbedPage>

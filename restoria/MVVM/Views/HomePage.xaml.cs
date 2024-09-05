@@ -38,25 +38,24 @@ namespace restoria
             this.CurrentPage = this.Children[3]; // Switch to the Profile tab
         }
 
-        // Example event handlers for button clicks
         private void Dashboard_Button(object sender, EventArgs e)
         {
-            SwitchToDashboardTab();
+            SwitchToDashboardTab(); // Switches to specified tab
         }
 
         private void Doctors_Button(object sender, EventArgs e)
         {
-            SwitchToDoctorsTab();
+            SwitchToDoctorsTab(); // Switches to specified tab
         }
 
         private void Schedule_Button(object sender, EventArgs e)
         {
-            SwitchToScheduleTab();
+            SwitchToScheduleTab(); // Switches to specified tab
         }
 
         private void Profile_Button(object sender, EventArgs e)
         {
-            SwitchToProfileTab();
+            SwitchToProfileTab(); // Switches to specified tab
         }
 
         private void Booking_Button(object sender, EventArgs e)
