@@ -9,6 +9,9 @@ namespace restoria
         {
             InitializeComponent();
             BindingContext = new HomePageViewModel();
+            datePicker.MinimumDate = DateTime.Today;
+            datePicker.MaximumDate = DateTime.Today.AddDays(365);
+
         }
 
         // Method to switch to the Doctors tab
@@ -54,6 +57,12 @@ namespace restoria
         private void Profile_Button(object sender, EventArgs e)
         {
             SwitchToProfileTab();
+        }
+
+        private void Booking_Button(object sender, EventArgs e)
+        {
+            var databaseService = new DatabaseService();
+            databaseService.AddAppointmentAsync(userId, doctorPicker.SelectedItem, datePicker.Date, timePicker.Time);
         }
     }
 }

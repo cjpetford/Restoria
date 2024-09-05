@@ -221,22 +221,37 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Profile_Button"/>
                         </Grid>
+                        
                     </Grid>
 
-                    <!-- Welcome text -->
                 </Grid>
 
-                <!-- Bottom navigation bar -->
-                <Grid RowDefinitions="*,Auto,*">
+                <Grid>
                     <!-- Spacer -->
                     <Grid Row="0"/>
-
-                    <!-- Navigation bar -->
+                    
                     <StackLayout Padding="10,50,10,10">
-                        <Label Text="Welcome back, placeholder_role placeholder_name"
-                   FontSize="18"
-                   FontAttributes="Bold"
-                   TranslationY="55"/>
+                        <VerticalStackLayout TranslationY="55">
+                            <Label Grid.Row="1" Text="BOOK NOW" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <VerticalStackLayout Grid.Row="2" Padding="0,0,0,0">
+                                <Label Text="Doctor's Name" HorizontalOptions="Start" FontAttributes="Bold"/>
+                                <Picker Title="Select a Doctor"
+                                    x:Name="doctorPicker"
+                                    ItemsSource="{Binding Doctors}"
+                                    ItemDisplayBinding="{Binding Name}"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Row="2">
+                                <Label Text="Select a date" FontAttributes="Bold"/>
+                                <DatePicker x:Name="datePicker" Date="{Binding SelectedDate}" Format="d"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Row="3">
+                                <Label Text="Select a time" FontAttributes="Bold"/>
+                                <TimePicker x:Name="timePicker" Time="{Binding SelectedTime}" Format="HH:mm"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Row="4" Margin="5">
+                                <Button WidthRequest="300" Text="SCHEDULE APPOINTMENT" Clicked="Booking_Button"/>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
                     </StackLayout>
                 </Grid>
             </Grid>

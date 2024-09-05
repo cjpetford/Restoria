@@ -37,10 +37,21 @@ public class DatabaseService
     {
         return await _database.Table<Doctor>().ToListAsync();
     }
+    
+    public async Task<Doctor> GetDoctorAsync(int Id)
+    {
+        return await _database.Table<Doctor>().Where(d => d.Id == Id).FirstOrDefaultAsync();
+    }
 
     public async Task<bool> AnyDoctorsAsync()
     {
         var count = await _database.Table<Doctor>().CountAsync();
         return count > 0;
+    }
+
+    public async Task AddAppointmentAsync(int userId, Doctor doctor, DateTime appointmentDate, TimeSpan appointmentTime)//Can't you see I'm burning, burning
+    {
+        Appointment appointment = new Appointment { UserID = userId, DoctorID = doctor.Id, AppointmentDate = appointmentDate, AppointmentTime = appointmentTime };
+        await _database.InsertAsync(appointment);
     }
 }
