@@ -49,9 +49,9 @@ public class DatabaseService
         return count > 0;
     }
 
-    public async Task AddAppointmentAsync(int userId, Doctor doctor, DateTime appointmentDate, TimeSpan appointmentTime)//Can't you see I'm burning, burning
+    public async Task AddAppointmentAsync(Doctor doctor, DateTime appointmentDate, TimeSpan appointmentTime)//Can't you see I'm burning, burning
     {
-        Appointment appointment = new Appointment { UserID = userId, DoctorID = doctor.Id, AppointmentDate = appointmentDate, AppointmentTime = appointmentTime };
-        await _database.InsertAsync(appointment);
+        //Appointment appointment = new Appointment { DoctorID = doctor.Id, AppointmentDate = appointmentDate, AppointmentTime = appointmentTime };
+        //await _database.InsertAsync(appointment);
     }
 }

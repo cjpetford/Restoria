@@ -60,8 +60,8 @@ namespace restoria
 
         private void Booking_Button(object sender, EventArgs e)
         {
-            var databaseService = new DatabaseService();
-            databaseService.AddAppointmentAsync(userId, doctorPicker.SelectedItem, datePicker.Date, timePicker.Time);
+            //var databaseService = new DatabaseService();
+            //databaseService.AddAppointmentAsync(doctorPicker.SelectedItem, datePicker.Date, timePicker.Time);
         }
     }
 }
