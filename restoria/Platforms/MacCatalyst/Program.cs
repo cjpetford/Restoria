@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace restoria
+namespace BookingAppRestoria
 {
     public class Program
     {

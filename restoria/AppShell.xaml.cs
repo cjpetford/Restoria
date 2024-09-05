@@ -1,4 +1,4 @@
-﻿namespace restoria
+﻿namespace BookingAppRestoria
 {
     public partial class AppShell : Shell
     {

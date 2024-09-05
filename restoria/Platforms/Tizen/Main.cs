@@ -2,7 +2,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace restoria
+namespace BookingAppRestoria
 {
     internal class Program : MauiApplication
     {

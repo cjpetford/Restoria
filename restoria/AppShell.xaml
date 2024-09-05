@@ -1,9 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:restoria"
-       x:Class="restoria.AppShell">
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BookingAppRestoria.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BookingAppRestoria"
+    Shell.FlyoutBehavior="Disabled"
+    Title="BookingAppRestoria">
 
-    <!-- Define routes or pages here -->
-    <ShellContent Title="Main Page" ContentTemplate="{DataTemplate local:MainPage}" />
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
 </Shell>

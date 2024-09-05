@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace restoria
+namespace BookingAppRestoria
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

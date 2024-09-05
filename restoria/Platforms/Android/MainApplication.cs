@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace restoria
+namespace BookingAppRestoria
 {
     [Application]
     public class MainApplication : MauiApplication
