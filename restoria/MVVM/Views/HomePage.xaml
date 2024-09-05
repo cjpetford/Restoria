@@ -136,11 +136,12 @@
                     <!-- Welcome text -->
                 </Grid>
 
-                <!-- Bottom navigation bar -->
-                <Grid RowDefinitions="*,Auto,*">
+                <Grid RowDefinitions=" 15*, 85*">
                     <!-- Spacer -->
-                    <Grid Row="0"/>
-                    <CollectionView Grid.Row="1" ItemsSource="{Binding Doctors}">
+                    <Grid Row="0"></Grid>
+                    <Grid Row="1"/>
+                    <ScrollView Grid.Row="1">
+                    <CollectionView ItemsSource="{Binding Doctors}">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
                         </CollectionView.ItemsLayout>
@@ -153,14 +154,15 @@
                                             <Label StyleClass="RoyalBlue, CardTitle" Text="{Binding Role}"/>
                                             <Label StyleClass="RoyalBlue, Subheader" Text="{Binding Qualifications}"/>
                                             <Image Source="profile_icon.png"
-                                                   TranslationX="90"
-                                                   TranslationY="-95"/>
+                                                   TranslationX="110"
+                                                   TranslationY="-75"/>
                                         </VerticalStackLayout>
                                     </Frame>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                    </ScrollView>
                 </Grid>
             </Grid>
         </Grid>

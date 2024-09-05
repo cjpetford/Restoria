@@ -67,8 +67,10 @@ namespace restoria.MVVM.ViewModels
                 // Add initial doctors
                 var initialDoctors = new List<Doctor>
             {
-                new Doctor { Name = "Dr. No", Role = "Cardiology", Qualifications = "Yeah" },
-                new Doctor { Name = "Dr. Chase", Role = "Something", Qualifications = "Yeah 2" }
+                new Doctor { Name = "Dr. Gregory House", Qualifications = "All of them", Role = "Head of Diagnostics" }, 
+                new Doctor { Name = "Dr. Allison Cameron", Qualifications = "Physiology & Immunology", Role = "Physicion & Immunologist" }, 
+                new Doctor { Name = "Dr. Robert Chase", Qualifications = "Surgery", Role = "Surgeon" }, 
+                new Doctor { Name = "Dr. Eric Foreman", Qualifications = "Neurology", Role = "Neurologist" }
             };
 
                 foreach (var doctor in initialDoctors)
