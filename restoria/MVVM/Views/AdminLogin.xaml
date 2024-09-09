@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingAppRestoria.MVVM.Views.AdminLogin"
+             Title="AdminLogin"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- ================================================================ -->
+    <!-- ================ STYLING FOR THIS PAGE FEATURES ================ -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="#0D5BB3"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+            <Setter Property="Margin" Value="0,20,0,-15"/>
+        </Style>
+        <Style x:Key="BodyStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="OpenSansBold"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="Span">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.0"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- =================================================== -->
+    <!-- ================ BACKGROUND COLOUR ================ -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Azure" Offset="0.3" />
+            <GradientStop Color="LightGreen" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <!-- ============================================== -->
+    <!-- ================ MAIN CONTENT ================ -->
+
+
+    <ScrollView>
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Image at the top -->
+            <Image Grid.Row="0" Source="logo.png" Aspect="AspectFit" HeightRequest="50" 
+               HorizontalOptions="Center" VerticalOptions="Start" />
+
+            <VerticalStackLayout Grid.Row="1" Spacing="10">
+
+                <Label Text="Restoria Admin Login" FontSize="20" TextColor="Black" FontAttributes="Bold" Margin="0,50,0,20"
+                   HorizontalOptions="Center"/>
+
+                <Label Text="Admin Key Log" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry Placeholder="gazala4958" Keyboard="Email" x:Name="emailEntry" />
+
+
+                <Label Text="Password" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Entry Placeholder="password" IsPassword="True" x:Name="passwordEntry"/>
+
+
+                <Label Text="Captcha" FontSize="18" Style="{StaticResource TitleStyle}"/>
+                <Label x:Name="captchaLabel" FontSize="18" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                <Entry x:Name="captchaEntry" Placeholder="Enter Captcha" FontSize="16"/>
+                <Button Text="Refresh Captcha" Clicked="OnRefreshCaptchaClicked" FontSize="18" BackgroundColor="#0F95CD" CornerRadius="10"/>
+
+
+
+
+
+                <Button Text="Log In" 
+                    BackgroundColor="#0D5BB3" 
+                    TextColor="WhiteSmoke" 
+                    FontSize="18" Margin="0,10,0,0" 
+                    CornerRadius="10"
+                    Clicked="AdminLogin_Clicked"/>
+
+                
+
+                 <Button Text="Cancel" 
+                      BackgroundColor="LimeGreen"
+                      TextColor="Black" 
+                      FontSize="18"
+                      CornerRadius="10"
+                      Clicked="Cancel_Clicked"/>
+
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

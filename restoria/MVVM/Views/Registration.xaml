@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="BookingAppRestoria.MVVM.Views.Registration"
-             BackgroundColor="White"
              NavigationPage.HasNavigationBar="False">
-    
+
     <!-- ================================================================ -->
     <!-- ================ STYLING FOR THIS PAGE FEATURES ================ -->
     <ContentPage.Resources>
@@ -54,7 +53,7 @@
 
             <!-- Image at the top -->
             <Image Grid.Row="0" Source="logo.png" Aspect="AspectFit" HeightRequest="50" 
-                   HorizontalOptions="Center" VerticalOptions="Start" Margin="0,50,0,10" />
+                   HorizontalOptions="Center" VerticalOptions="Start" Margin="0,0,0,10" />
 
             <!-- Sign Up Form -->
             <VerticalStackLayout Grid.Row="1" Spacing="15" Padding="5">
@@ -173,8 +172,7 @@
                             <Span Text="Already Have an Account? " 
                                   TextColor="Gray" FontSize="14"/>
                             <Span Text="Sign In" TextColor="#0D5BB3" 
-                                  FontSize="14"
-                                  TextDecorations="Underline">
+                                  FontSize="14">
                                 <Span.GestureRecognizers>
                                     <!-- Uncomment and handle the Tapped event for navigation -->
                                      <TapGestureRecognizer Tapped="OnExistingUserTapped"/> 

@@ -1,28 +1,23 @@
-//using Microsoft.WindowsAppSDK.Runtime.Packages;
-using Microsoft.Maui.Controls;
-using BookingAppRestoria.MVVM.Models;
 using BookingAppRestoria.Services;
-using BookingAppRestoria.MVVM.Views;
+using BookingAppRestoria.MVVM.Models;
+using Microsoft.Maui.Controls;
 
 namespace BookingAppRestoria.MVVM.Views;
 
 public partial class Login : ContentPage
 {
     private CaptchaGenerator captchaGenerator;
-
-    private User _user;
-
-    // =======================================
-    // ========= DEFAULT CONSTRUCTOR =========
+    private readonly DatabaseService _databaseService;
 
     public Login()
-    {
-        InitializeComponent();
+	{
+		InitializeComponent();
+
+        _databaseService = new DatabaseService();
+
         captchaGenerator = new CaptchaGenerator();
         GenerateNewCaptcha();
-
     }
-
 
     //=====================================================
     //================ REGENERATING CAPTCHA ===============
@@ -40,29 +35,62 @@ public partial class Login : ContentPage
         GenerateNewCaptcha(); // Refresh the Captcha
     }
 
-    //====================================================
-    //================ LOAD PRIVACY POLICY ===============
-    private async void PrivacyPolicyTapped(object sender, EventArgs e)
+    //================================================
+    //================ PASSWORD FORGET ===============
+    private async void OnForgotPasswordTapped(object sender, EventArgs e)
     {
-        // Navigate to the Privacy Policy page
-        await Navigation.PushAsync(new PrivacyPolicy());
+        // Display an alert to inform the user that a reset link has been sent
+        await DisplayAlert("Reset Password", "A link to has been sent to you email to reset your credentials.", "OK");
     }
 
-    //========================================================
-    //================ LOAD TERMS & CONDITIONS ===============
-    private async void TermsTapped(object sender, EventArgs e)
+    //===========================================
+    //================ USER LOGIN ===============
+    private async void OnLoginButton_Clicked(object sender, EventArgs e)
     {
-        // Navigate to the Privacy Policy page
-        await Navigation.PushAsync(new TermsAndConditions());
+        string email = emailEntry.Text;
+        string password = passwordEntry.Text;
+
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            await DisplayAlert("Login Error", "Please enter both email and password.", "OK");
+            return;
+        }
+        // ======================================
+        // ========= CAPTCHA COMAPRISON =========
+        else if (captchaEntry.Text != captchaLabel.Text)
+        {
+            await DisplayAlert("Registration Error", "CAPTCHA does not match!. Please try again", "OK");
+            captchaEntry.BackgroundColor = Colors.Red;
+            captchaEntry.Focus();
+            return;
+        }
+
+        // Fetch user from the database
+        var user = await _databaseService.GetUserByEmailAndPasswordAsync(email, password);
+
+        if (user != null)
+        {
+            // Login successful, navigate to the homepage
+            await Navigation.PushAsync(new HomePage());
+        }
+        else
+        {
+            // Login failed, show an error message
+            await DisplayAlert("Login Error", "Invalid email or password. Please try again.", "OK");
+        }
     }
 
-    private async void loginButton_Clicked(object sender, EventArgs e)
+    //=====================================================================
+    //================ NON-REGISTERED USER TO REGISTER PAGE ===============
+    private async void OnRegisterNowTapped(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new HomePage());
+        
+        await Navigation.PushAsync (new Registration());
     }
 
-    private async void OnExistingUserTapped(object sender, EventArgs e)
+    private async void Admin_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Login());
+        await Navigation.PushAsync(new AdminLogin());
     }
+
 }

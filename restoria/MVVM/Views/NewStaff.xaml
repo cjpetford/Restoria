@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingAppRestoria.MVVM.Views.NewStaff"
+             Title="New Staff"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- ================================================================ -->
+    <!-- ================ STYLING FOR THIS PAGE FEATURES ================ -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="#0D5BB3"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+            <Setter Property="Margin" Value="0,20,0,-15"/>
+        </Style>
+        <Style x:Key="BodyStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="OpenSansBold"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="Span">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.0"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- =================================================== -->
+    <!-- ================ BACKGROUND COLOUR ================ -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Azure" Offset="0.3" />
+            <GradientStop Color="LightGreen" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <!-- ============================================== -->
+    <!-- ================ MAIN CONTENT ================ -->
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Spacing="10" Padding="10">
+                <Label Text="Add New Staff Member" 
+                       Style="{StaticResource TitleStyle}"
+                       FontAttributes="Bold"
+                       FontSize="24" 
+                       HorizontalOptions="Center" 
+                       Margin="0,30,0,10"/>
+
+                <Label Text="Enter New Staff Name"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="15"/>
+                <Entry x:Name="nameEntry"
+                       Placeholder="Dr. Hodson Tomokino"/>
+
+                <Label Text="Enter Career Specialisation"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="15"/>
+                <Entry x:Name="specialtyEntry" 
+                       Placeholder="Software Developer"/>
+
+                <Label Text="Staff Qualification"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="15"/>
+                <Entry x:Name="qualificationsEntry" 
+                       Placeholder="Diploma in ITSDA"/>
+
+                <Button Text="Add Staff to List" 
+                        BackgroundColor="LimeGreen"
+                        Margin="0,10"
+                        TextColor="Black" 
+                        FontSize="18"
+                        CornerRadius="10"
+                        Clicked="NewStaff_Clicked"/>
+            </StackLayout>
+
+            <Label Text=" ================================================"/>
+            <Label Text="Current Staff List"
+                   Style="{StaticResource TitleStyle}"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,-10"/>
+
+            <!-- CollectionView for displaying the list of doctors -->
+            <CollectionView ItemsSource="{Binding Doctors}" Margin="0,20">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <!-- Edit Button -->
+                                <SwipeItem IconImageSource="editor.png"                                          
+                                           BackgroundColor="DeepSkyBlue"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditDoctorCommand}"
+                                           CommandParameter="{Binding .}" />
+                                <!-- Delete Button -->
+                                <SwipeItem IconImageSource="delete_icon.png"
+                                           BackgroundColor="Firebrick"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteDoctorCommand}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeView.LeftItems>
+
+                            <Grid Padding="10,5">
+                                <Frame MaximumHeightRequest="150">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Style="{StaticResource BodyStyle}" Text="{Binding Name, StringFormat='Staff Member: {0}'}" />
+                                        <Label Style="{StaticResource BodyStyle}" Text="{Binding Role, StringFormat='Employed as: {0}'}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout x:Name="EditingForm" IsVisible="False" Padding="10">
+                <Label Text="Edit Staff Member" 
+                       Style="{StaticResource TitleStyle}"
+                       FontAttributes="Bold"
+                       FontSize="24" 
+                       HorizontalOptions="Center" 
+                       Margin="0,10,0,10"/>
+
+                <Label Text="Edit Staff Name"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="15"/>
+                <Entry x:Name="editNameEntry"/>
+
+                <Label Text="Edit Career Specialisation"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="15"/>
+                <Entry x:Name="editSpecialtyEntry"/>
+
+                <Label Text="Edit Staff Qualification"
+                       Style="{StaticResource TitleStyle}"
+                       FontSize="15"/>
+                <Entry x:Name="editQualificationsEntry"/>
+
+                <Button Text="Save Changes" 
+                        BackgroundColor="MediumSeaGreen"
+                        TextColor="White"
+                        FontSize="18"
+                        CornerRadius="10"
+                        Clicked="SaveChanges_Clicked"/>
+                <Button Text="Cancel" 
+                        BackgroundColor="LightCoral"
+                        TextColor="White"
+                        FontSize="18"
+                        CornerRadius="10"
+                        Clicked="CancelEdit_Clicked"/>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

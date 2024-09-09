@@ -1,8 +1,6 @@
 //using Microsoft.WindowsAppSDK.Runtime.Packages;
-using Microsoft.Maui.Controls;
 using BookingAppRestoria.MVVM.Models;
 using BookingAppRestoria.Services;
-using BookingAppRestoria.MVVM.Views;
 
 namespace BookingAppRestoria.MVVM.Views;
 
@@ -84,7 +82,7 @@ public partial class Registration : ContentPage
 
         // =========================================
         // ========= FIRST NAME VALIDATION =========
-        if (string.IsNullOrEmpty(firstNameEntry.Text)) 
+        if (string.IsNullOrEmpty(firstNameEntry.Text))
         {
             await DisplayAlert("Registration Error", "First Name is Required.", "OK");
             firstNameEntry.BackgroundColor = Colors.Red;
@@ -182,7 +180,7 @@ public partial class Registration : ContentPage
 
         // ============================================
         // ========= PRIVACY POLICY AGREEMENT =========
-        else if(!privacyPolicyCheckBox.IsChecked)
+        else if (!privacyPolicyCheckBox.IsChecked)
         {
             await DisplayAlert("Agreement Required", "Please kindly agree to the PRIVACY POLICY before proceeding", "OK");
             captchaEntry.BackgroundColor = Colors.Transparent;
@@ -206,19 +204,20 @@ public partial class Registration : ContentPage
         // ========= SAVE ALL INPUT IN DATABASE ===========
         else
         {
-            //_user.FirstName = firstNameEntry.Text;
-            //_user.LastName = lastNameEntry.Text;
-            //_user.Email = emailEntry.Text;
-            //_user.Password = passwordEntry1.Text;
-            //_user.DOB = dobPicker.Date;
-            //_user.Contact = int.Parse(contactEntry.Text);
-            //_user.Conditions = conditionEntry.Text;
+            _user.FirstName = firstNameEntry.Text;
+            _user.LastName = lastNameEntry.Text;
+            _user.Email = emailEntry.Text;
+            _user.Password = passwordEntry1.Text;
+            _user.DOB = dobPicker.Date;
+            _user.Contact = int.Parse(contactEntry.Text);
+            _user.Conditions = conditionEntry.Text;
 
-            //var databaseService = new DatabaseService();
-            //await databaseService.AddUserAsync(_user);
-            await Navigation.PushAsync(new HomePage());
+            var databaseService = new DatabaseService();
+            await databaseService.AddUserAsync(_user);
 
+            await Navigation.PushAsync(new Login());
         }
+            
     }
 
     private async void OnExistingUserTapped(object sender, EventArgs e)

@@ -8,7 +8,7 @@ namespace BookingAppRestoria
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Registration());
+            MainPage = new NavigationPage(new Landing());
         }
 
         protected override void OnStart()
