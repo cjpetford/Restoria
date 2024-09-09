@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Controls;
+﻿using AndroidX.Lifecycle;
+using Microsoft.Maui.Controls;
+using restoria.MVVM.Models;
 using restoria.MVVM.ViewModels;
 
 namespace restoria
@@ -9,9 +11,6 @@ namespace restoria
         {
             InitializeComponent();
             BindingContext = new HomePageViewModel();
-            datePicker.MinimumDate = DateTime.Today;
-            datePicker.MaximumDate = DateTime.Today.AddDays(365);
-
         }
 
         // Method to switch to the Doctors tab
@@ -58,10 +57,19 @@ namespace restoria
             SwitchToProfileTab(); // Switches to specified tab
         }
 
-        private void Booking_Button(object sender, EventArgs e)
+        private void doctorPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //var databaseService = new DatabaseService();
-            //databaseService.AddAppointmentAsync(doctorPicker.SelectedItem, datePicker.Date, timePicker.Time);
+            var viewModel = BindingContext as HomePageViewModel;
+
+            if (viewModel != null)
+            {
+                if (doctorPicker.SelectedItem != null)
+                {
+                    Doctor doctor = doctorPicker.SelectedItem as Doctor;
+                    viewModel.UpdateAppointmentsListPerDoctor(doctor);
+                }
+            }
+            
         }
     }
 }

@@ -80,8 +80,8 @@
     </ContentPage>
     <!-- ~~~~~~~~~~~~~~~~~ DASHBOARD PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
 
-    
-    
+
+
     <!-- ~~~~~~~~~~~~~~~~~ DOCTORS PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
     <ContentPage Title="Doctors">
         <!-- Main layout grid -->
@@ -90,17 +90,17 @@
                 <!-- Top bar -->
                 <Grid RowDefinitions="Auto,*">
                     <!-- Top navigation buttons -->
-                <Grid>
-                    <Grid Row="0" BackgroundColor="White" Padding="0,10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid Row="0" BackgroundColor="White" Padding="0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <!-- Dashboard button -->
-                        <Button Grid.Column="0"
+                            <!-- Dashboard button -->
+                            <Button Grid.Column="0"
                         ImageSource="home_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -109,8 +109,8 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Dashboard_Button"/>
 
-                        <!-- Doctors button -->
-                        <Button Grid.Column="1"
+                            <!-- Doctors button -->
+                            <Button Grid.Column="1"
                         ImageSource="doctors_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -119,8 +119,8 @@
                         BackgroundColor="CornflowerBlue"
                         Clicked="Doctors_Button"/>
 
-                        <!-- Booking button -->
-                        <Button Grid.Column="2"
+                            <!-- Booking button -->
+                            <Button Grid.Column="2"
                         ImageSource="schedule_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -129,8 +129,8 @@
                         BackgroundColor="PaleTurquoise"
                         Clicked="Schedule_Button"/>
 
-                        <!-- Profile button -->
-                        <Button Grid.Column="3"
+                            <!-- Profile button -->
+                            <Button Grid.Column="3"
                         ImageSource="profile_icon.png"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
@@ -138,9 +138,9 @@
                         HeightRequest="84"
                         BackgroundColor="PaleTurquoise"
                         Clicked="Profile_Button"/>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
 
                 <Grid RowDefinitions=" 15*, 85*">
                     <!-- A Spacer -->
@@ -148,27 +148,27 @@
                     <Grid Row="1"/>
                     <ScrollView Grid.Row="1">
                         <!-- Collection view of all listed doctors, printing their details and whatnot in an orderly scrollable frame layout -->
-                    <CollectionView ItemsSource="{Binding Doctors}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Padding="5">
-                                    <Frame MaximumHeightRequest="155">
-                                        <VerticalStackLayout Padding="5" Spacing="5">
-                                            <Label StyleClass="RoyalBlue, Header" Text="{Binding Name}"/>
-                                            <Label StyleClass="RoyalBlue, CardTitle" Text="{Binding Role}"/>
-                                            <Label StyleClass="RoyalBlue, Subheader" Text="{Binding Qualifications}"/>
-                                            <Image Source="profile_icon.png"
+                        <CollectionView ItemsSource="{Binding Doctors}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="5">
+                                        <Frame MaximumHeightRequest="155">
+                                            <VerticalStackLayout Padding="5" Spacing="5">
+                                                <Label StyleClass="RoyalBlue, Header" Text="{Binding Name}"/>
+                                                <Label StyleClass="RoyalBlue, CardTitle" Text="{Binding Role}"/>
+                                                <Label StyleClass="RoyalBlue, Subheader" Text="{Binding Qualifications}"/>
+                                                <Image Source="profile_icon.png"
                                                    TranslationX="110"
                                                    TranslationY="-75"/>
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                                            </VerticalStackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </ScrollView>
                 </Grid>
             </Grid>
@@ -176,8 +176,8 @@
     </ContentPage>
     <!-- ~~~~~~~~~~~~~~~~~ DOCTORS PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
 
-    
-    
+
+
     <!-- ~~~~~~~~~~~~~~~~~ BOOKING PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
     <ContentPage Title="Booking">
         <!-- Main layout grid -->
@@ -252,27 +252,38 @@
                                 <Picker Title="Select a Doctor"
                                     x:Name="doctorPicker"
                                     ItemsSource="{Binding Doctors}"
-                                    ItemDisplayBinding="{Binding Name}"/>
+                                    ItemDisplayBinding="{Binding Name}"
+                                    SelectedIndexChanged="doctorPicker_SelectedIndexChanged"/>
                             </VerticalStackLayout>
                             <!-- Second row of entries. This will be remastered in my next push to better support a slot booking system, however 
                             it currently displays a calendar on click, and allows the user to select a date. That date is then stored to the SelectedDate
                             variable which is not only not implemented, but obsolete as you can simply reference the date via datePicker.Date in the .cs 
                             file. Format="d" is used to display the date like 01/02/3456, whereas format="D" displays as Day, Month, Year. -->
                             <VerticalStackLayout Grid.Row="3">
-                                <Label Text="Select a date" FontAttributes="Bold"/>
-                                <DatePicker x:Name="datePicker" Date="{Binding SelectedDate}" Format="d"/>
-                            </VerticalStackLayout>
-                            <!-- Third row of entries. This will also be remastered in the next push. Again, the binding SelectedTime is not necessary for
-                            the same reason as stated before. Format="HH:mm" displays the time as 24 hours rather than 12 hour AM/PM -->
-                            <VerticalStackLayout Grid.Row="4">
-                                <Label Text="Select a time" FontAttributes="Bold"/>
-                                <TimePicker x:Name="timePicker" Time="{Binding SelectedTime}" Format="HH:mm"/>
+                                <Label Text="Available Appointments:"/>
+                                <CollectionView x:Name="appointmentPicker" ItemsSource="{Binding Appointments}" 
+                                                MaximumHeightRequest="250" SelectionMode="Single" IsEnabled="True">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="5">
+                                                <Frame MaximumHeightRequest="100" WidthRequest="50">
+                                                    <VerticalStackLayout Padding="5" Spacing="5">
+                                                        <Label StyleClass="RoyalBlue, CardTitle" Text="{Binding AppointmentDate}"/>
+                                                    </VerticalStackLayout>
+                                                </Frame>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
                             </VerticalStackLayout>
                             <!-- Appointment Scheduling button. Pretty straightforward. Clicked="Booking_Button" calls the relevant function in thispage.xaml.cs
                             and executes all code behind.-->
-                            <VerticalStackLayout Grid.Row="5" Margin="5">
-                                <Button WidthRequest="300" Text="SCHEDULE APPOINTMENT" Clicked="Booking_Button"/>
-                            </VerticalStackLayout>
+                            <!--<VerticalStackLayout Grid.Row="4" Margin="5">
+                                <Button WidthRequest="300" Text="SCHEDULE APPOINTMENT"/>
+                            </VerticalStackLayout>-->
                         </VerticalStackLayout>
                     </StackLayout>
                 </Grid>

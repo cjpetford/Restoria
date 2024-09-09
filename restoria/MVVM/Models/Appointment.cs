@@ -11,10 +11,9 @@ namespace restoria.MVVM.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int UserID { get; set; }
-        public int DoctorID { get; set; }
+        public int userId { get; set; }
+        public int doctorId { get; set; }
         public DateTime AppointmentDate { get; set; }
-        public TimeSpan AppointmentTime { get; set; }
 
     }
 }

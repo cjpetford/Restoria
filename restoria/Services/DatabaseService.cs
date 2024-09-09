@@ -12,7 +12,7 @@ public class DatabaseService
         _database = new SQLiteAsyncConnection(databasePath);
     }
 
-    public async Task InitializeAsync()
+    public async Task InitializeDoctorsAsync()
     {
         await _database.CreateTableAsync<Doctor>();
     }
@@ -37,7 +37,7 @@ public class DatabaseService
     {
         return await _database.Table<Doctor>().ToListAsync();
     }
-    
+
     public async Task<Doctor> GetDoctorAsync(int Id)
     {
         return await _database.Table<Doctor>().Where(d => d.Id == Id).FirstOrDefaultAsync();
@@ -49,9 +49,43 @@ public class DatabaseService
         return count > 0;
     }
 
-    public async Task AddAppointmentAsync(Doctor doctor, DateTime appointmentDate, TimeSpan appointmentTime)//Can't you see I'm burning, burning
+    public async Task InitializeAppointmentsAsync()
     {
-        //Appointment appointment = new Appointment { DoctorID = doctor.Id, AppointmentDate = appointmentDate, AppointmentTime = appointmentTime };
-        //await _database.InsertAsync(appointment);
+        await _database.CreateTableAsync<Appointment>();
+    }
+
+    public async Task<List<Appointment>> GetAppointmentsAsync()
+    {
+        return await _database.Table<Appointment>().ToListAsync();
+    }
+
+    public async Task AddAppointmentAsync(Appointment appointment)
+    {
+        await _database.InsertAsync(appointment);
+    }
+
+    public async Task UpdateAppointmentAsync(Appointment appointment/*, User patient*/)
+    {
+        //appointment.patient = patient;
+        await _database.UpdateAsync(appointment);
+    }
+
+    public async Task RemoveAppointmentAsync(Appointment appointment)
+    {
+        await _database.DeleteAsync(appointment);
+    }
+
+    public async Task RemoveAllAppointmentsAsync()
+    {
+        var appointments = await GetAppointmentsAsync();
+        if (appointments.Count > 0)
+            foreach (var appointment in appointments)
+                await _database.DeleteAsync(appointment);
+    }
+
+    public async Task<bool> AnyAppointmentsAsync()
+    {
+        var count = await _database.Table<Appointment>().CountAsync();
+        return count > 0;
     }
 }
