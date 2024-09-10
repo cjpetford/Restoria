@@ -245,9 +245,13 @@
                         <!-- Start of Vert. layout. TranslationY = 55 to lower the element to beneath the navbar -->
                         <VerticalStackLayout TranslationY="55">
                             <Label Grid.Row="1" Text="BOOK NOW" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <VerticalStackLayout Grid.Row="2" Padding="0,0,0,0">
+                                <Label Text="Doctor's Name" HorizontalOptions="Start" FontAttributes="Bold"/>
+                                <DatePicker/>
+                            </VerticalStackLayout>
                             <!-- First row of entries. Reads from list of existing doctors (itemsource = Doctors) and provides a 'dropdown' menu 
                             upon interaction. ItemDisplayBinding is set to Name, referencing the Name value from each respective Doctor-->
-                            <VerticalStackLayout Grid.Row="2" Padding="0,0,0,0">
+                            <VerticalStackLayout Grid.Row="3" Padding="0,0,0,0">
                                 <Label Text="Doctor's Name" HorizontalOptions="Start" FontAttributes="Bold"/>
                                 <Picker Title="Select a Doctor"
                                     x:Name="doctorPicker"
@@ -259,7 +263,7 @@
                             it currently displays a calendar on click, and allows the user to select a date. That date is then stored to the SelectedDate
                             variable which is not only not implemented, but obsolete as you can simply reference the date via datePicker.Date in the .cs 
                             file. Format="d" is used to display the date like 01/02/3456, whereas format="D" displays as Day, Month, Year. -->
-                            <VerticalStackLayout Grid.Row="3">
+                            <VerticalStackLayout Grid.Row="4">
                                 <Label Text="Available Appointments:"/>
                                 <CollectionView x:Name="appointmentPicker" ItemsSource="{Binding Appointments}" 
                                                 MaximumHeightRequest="250" SelectionMode="Single" IsEnabled="True">
