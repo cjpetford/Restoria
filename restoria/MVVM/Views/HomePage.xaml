@@ -363,12 +363,27 @@
                     <Grid Row="0"/>
 
                     <!-- Placeholder text -->
-                    <StackLayout Padding="10,50,10,10">
-                        <Label Text="Welcome back, placeholder_role placeholder_name"
-                   FontSize="18"
-                   FontAttributes="Bold"
-                   TranslationY="55"/>
-                    </StackLayout>
+                    <ScrollView Padding="10,50,10,10">
+                        <CollectionView ItemsSource="{Binding Signedinuser}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="5">
+                                        <Frame MaximumHeightRequest="155">
+                                            <VerticalStackLayout Padding="5" Spacing="5">
+                                                <Label StyleClass="RoyalBlue, Header" Text="{Binding Username}"/>
+                                                <Label StyleClass="RoyalBlue, CardTitle" Text="{Binding UserPhoneNum}"/>
+                                                <Label StyleClass="RoyalBlue, Subheader" Text="{Binding UserAddress}"/>
+                                                <Image Source="profile_icon.png" TranslationX="110" TranslationY="-75"/>
+                                            </VerticalStackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        </ScrollView>
                 </Grid>
             </Grid>
         </Grid>
