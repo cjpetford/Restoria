@@ -1,5 +1,4 @@
-﻿using AndroidX.Lifecycle;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 using restoria.MVVM.Models;
 using restoria.MVVM.ViewModels;
 
@@ -11,6 +10,8 @@ namespace restoria
         {
             InitializeComponent();
             BindingContext = new HomePageViewModel();
+            datePicker.MinimumDate = DateTime.Now;
+            datePicker.MaximumDate = DateTime.Now.AddDays(7);
         }
 
         // Method to switch to the Doctors tab
@@ -59,6 +60,7 @@ namespace restoria
 
         private void doctorPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
+            appointmentPicker.IsVisible = true;
             var viewModel = BindingContext as HomePageViewModel;
 
             if (viewModel != null)
@@ -66,10 +68,24 @@ namespace restoria
                 if (doctorPicker.SelectedItem != null)
                 {
                     Doctor doctor = doctorPicker.SelectedItem as Doctor;
-                    viewModel.UpdateAppointmentsListPerDoctor(doctor);
+                    viewModel.UpdateAppointmentsListPerDoctor(doctor, datePicker.Date);
                 }
             }
-            
+        }
+
+        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            doctorPicker.IsVisible = true;
+        }
+
+        private void appointmentPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            appointmentButton.IsVisible = true;
+        }
+
+        private void appointmentButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

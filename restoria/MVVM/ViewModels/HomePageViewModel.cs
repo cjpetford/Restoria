@@ -16,6 +16,7 @@ namespace restoria.MVVM.ViewModels
         {
             Doctors = new ObservableCollection<Doctor>();
             Appointments = new ObservableCollection<Appointment>();
+            PurgeOldAppointments();
             InitializeDatabase();
             InitList();
         }
@@ -83,16 +84,17 @@ namespace restoria.MVVM.ViewModels
             
         private async void PurgeOldAppointments()
         {
-            foreach (var appointments in Appointments)
-                if (appointments.AppointmentDate <= DateTime.Now)
+            var appointmentsToRemove = await Database.GetAppointmentsAsync();
+            foreach (var appointments in appointmentsToRemove)
+                if (appointments.AppointmentDate >= DateTime.Now)
                     await Database.RemoveAppointmentAsync(appointments);
         }
 
-        public async void UpdateAppointmentsListPerDoctor(Doctor doctor)
+        public async void UpdateAppointmentsListPerDoctor(Doctor doctor, DateTime date)
         {
             var appointments = await Database.GetAppointmentsAsync();
             foreach (var appointment in appointments)
-                if (doctor.Id == appointment.doctorId)
+                if (doctor.Id == appointment.doctorId && date == appointment.AppointmentDate)
                     Appointments.Add(appointment);
         }
     }
