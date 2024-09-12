@@ -1,0 +1,41 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingAppRestoria.MVVM.Views.Landing"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- =================================================== -->
+    <!-- ================ BACKGROUND COLOUR ================ -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Azure" Offset="0.3" />
+            <GradientStop Color="#7CE9F4" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <!-- ============================================== -->
+    <!-- ================ MAIN CONTENT ================ -->
+
+    <Grid>
+        <!-- Logo and App Name -->
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="logo.png" WidthRequest="300" HeightRequest="200"/>
+            <Label Text="We Restori'ya Health" 
+                   FontSize="27"
+                   Margin="0,-50,0,-25"
+                   TextColor="#0D5BB3"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"/>
+            
+            <Image Source="landingicon.png"/>
+        </StackLayout>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator IsRunning="True" 
+                           VerticalOptions="End" 
+                           HorizontalOptions="Center" 
+                           Color="White" 
+                           Margin="0,0,0,20"/>
+    </Grid>
+
+</ContentPage>

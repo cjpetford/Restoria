@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingAppRestoria.MVVM.Views.TermsAndConditions"
+             NavigationPage.HasNavigationBar="False">
+   
+    
+    <!-- ================================================================ -->
+    <!-- ================ STYLING FOR THIS PAGE FEATURES ================ -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="#0D5BB3"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+            <Setter Property="Margin" Value="0,40,0,5"/>
+        </Style>
+        <Style x:Key="BodyStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+        </Style>
+        <Style TargetType="Span">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="OpenSansBold"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+    </ContentPage.Resources>
+    <!-- ================================================================ -->
+
+    <!-- =================================================== -->
+    <!-- ================ BACKGROUND COLOUR ================ -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Azure" Offset="0.3" />
+            <GradientStop Color="#7CE9F4" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <!-- =================================================== -->
+
+    <!-- =================================================== -->
+    <!-- ================ PAGE CONTENTS ================ -->
+    <ScrollView>
+
+        <StackLayout VerticalOptions="Start"
+             Margin="10"
+             Spacing="0">
+
+            <!-- =================================================== -->
+            <!-- ================ RESTORIA APP LOGO ================ -->
+            <Image Source="logo.png"
+           HeightRequest="50"
+           WidthRequest="100"
+           HorizontalOptions="Start"
+           VerticalOptions="Start" />
+            <!-- =================================================== -->
+
+            <!--Purpose of Privacy Policy-->
+            <Label Text="Terms and Conditions"
+               FontSize="Title"
+               FontAttributes="Bold"
+               Style="{StaticResource TitleStyle}"
+               HorizontalOptions="Center"
+               Margin="5"/>
+
+            <BoxView Color="Black"
+             HeightRequest="1"
+             HorizontalOptions="FillAndExpand"
+             Margin="5"/>
+
+            <Label Text="Welcome to Restoria. Thank you for choosing Restoria. We are committed to providing you with a seamless and enjoyable experience. By accessing or using our app, you agree to comply with and be bound by the following terms and conditions. Please take a moment to read them carefully as they govern your use of our services."
+             Style="{StaticResource BodyStyle}"/>
+
+            <Label Text="Acceptance of Terms"
+              FontAttributes="Bold"
+              FontSize="Subtitle"
+              HorizontalOptions="Center"
+              Style="{StaticResource TitleStyle}"/>
+
+            <Label Text="By downloading, accessing, or using Restoria (hereafter referred to as the App), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use the App."
+                Style="{StaticResource BodyStyle}"/>
+
+            <Label Text="User Eligibility"
+              LineHeight="1.1"
+              FontAttributes="Bold"
+              FontSize="Subtitle"
+              HorizontalOptions="Center"
+              Style="{StaticResource TitleStyle}"/>
+
+            <Label Text="You must be at least 18 years old or have parental/guardian consent to use the App. The App is intended for users seeking to book appointments with their local General Practitioner (GP)."
+                Style="{StaticResource BodyStyle}"/>
+
+            <Label Text="Booking an Appointment"
+                   FontAttributes="Bold"
+                    FontSize="Subtitle"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource TitleStyle}"/>
+
+            <Label  Style="{StaticResource BodyStyle}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="• Availability: &#10;Appointments are subject to the availability of your GP. The App allows you to view available slots and book appointments accordingly.&#10;&#10;"/>
+                        <Span Text="• Confirmation: &#10;Your appointment is confirmed only when you receive a confirmation notification from the App.&#10;&#10;"/>
+                        <Span Text="• Cancellation and Rescheduling: &#10;You can cancel or reschedule your appointment through the App, subject to the cancellation policies of your GP. Please check with your GP for any specific cancellation fees or timeframes.&#10;&#10;" />
+                        <Span Text="• No-show Policy: &#10;Repeated failure to attend booked appointments may result in restrictions on future bookings.&#10;&#10;" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Text="User Responsibilities"
+                   FontAttributes="Bold"
+                    FontSize="Subtitle"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource TitleStyle}"/>
+
+            <Label  Style="{StaticResource BodyStyle}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="• Accurate Information: &#10;You agree to provide accurate and up-to-date information when registering and booking appointments. Any false or misleading information may result in the cancellation of your appointment.&#10;&#10;"/>
+                        <Span Text="• Health Information: &#10;The App may request basic health information to facilitate your appointment. This information is treated with confidentiality and is only shared with your GP as needed."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Text="Privacy and Data Security"
+              FontAttributes="Bold"
+              FontSize="Subtitle"
+              HorizontalOptions="Center"
+              Style="{StaticResource TitleStyle}"/>
+
+            <Label Text="Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your personal information. By using the App, you consent to the collection and use of your information as outlined in the Privacy Policy."
+                Style="{StaticResource BodyStyle}"/>
+
+
+            <Label Text="Limitation of Liability"
+                    FontAttributes="Bold"
+                     FontSize="Subtitle"
+                     HorizontalOptions="Center"
+                    Style="{StaticResource TitleStyle}"/>
+
+            <Label  Style="{StaticResource BodyStyle}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="• No Medical Advice:&#10;The App is a platform for booking appointments only. It does not provide medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions you may have regarding a medical condition.&#10;&#10;"/>
+                        <Span Text="• Service Disruptions:&#10;While we strive to ensure that the App operates smoothly, we do not guarantee uninterrupted or error-free access to the App. We are not responsible for any loss or inconvenience caused by technical issues or service disruptions."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Label Text="Changes to Terms"
+    LineHeight="1.1"
+    FontAttributes="Bold"
+    FontSize="Subtitle"
+    HorizontalOptions="Center"
+    Style="{StaticResource TitleStyle}"/>
+
+            <Label Text="We reserve the right to update or modify these Terms and Conditions at any time without prior notice. Your continued use of the App following any changes indicates your acceptance of the new terms."
+      Style="{StaticResource BodyStyle}"/>
+
+
+            <Label Text="Governing Law"
+                LineHeight="1.1"
+                FontAttributes="Bold"
+                FontSize="Subtitle"
+                HorizontalOptions="Center"
+                Style="{StaticResource TitleStyle}"/>
+
+            <Label Text="These Terms and Conditions are governed by and construed in accordance with the laws of New Zealand. Any disputes arising from or related to these terms will be resolved in the courts of New Zealand"
+              Style="{StaticResource BodyStyle}"/>
+
+
+            <Label Text="Contact Information"
+     LineHeight="1.1"
+     FontAttributes="Bold"
+     FontSize="Subtitle"
+     HorizontalOptions="Center"
+     Style="{StaticResource TitleStyle}"/>
+
+            <Label Text="If you have any questions or concerns about these Terms and Conditions, please contact us via email at restoria@gmail.com."
+   Style="{StaticResource BodyStyle}"/>
+
+            <Button x:Name="TC_ContinueButton"
+                    BackgroundColor="#0D5BB3"               
+                    CornerRadius="10"
+                    Text="CONTINUE ..."
+                    FontSize="Medium"
+                    TextColor="WhiteSmoke"
+                    Clicked="TC_ContinueButton_Clicked"
+                    Margin="0,69,0,0"/>
+   
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingAppRestoria.MVVM.Views.AdminPage"
+             Title="Administrator Board"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <!-- ================================================================ -->
+    <!-- ================ STYLING FOR THIS PAGE FEATURES ================ -->
+    <ContentPage.Resources>
+        <Style x:Key="TitleStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="#0D5BB3"/>
+            <Setter Property="FontSize" Value="Title"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+            <Setter Property="Margin" Value="0,20,0,-15"/>
+        </Style>
+        <Style x:Key="BodyStyle"  TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="OpenSansBold"/>
+            <Setter Property="TextColor" Value="WhiteSmoke"/>
+        </Style>
+        <Style TargetType="Span">
+            <Setter Property="FontFamily" Value="OpenSansRegular"/>
+            <Setter Property="TextColor" Value="Black"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="LineHeight" Value="1.0"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <!-- =================================================== -->
+    <!-- ================ BACKGROUND COLOUR ================ -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Azure" Offset="0.3" />
+            <GradientStop Color="LightGreen" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    
+    <!-- ============================================== -->
+    <!-- ================ MAIN CONTENT ================ -->
+    <ScrollView>
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <Label 
+            Text="Welcome Back Senpai"
+            Style="{StaticResource TitleStyle}"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button Text="Add New Doctor" 
+               BackgroundColor="LimeGreen"
+               Margin="0,50,0,0"
+               TextColor="Black" 
+               FontSize="18"
+               CornerRadius="10"
+               Clicked="AddDoctor_Clicked"/>
+
+        <Button Text="Create New User" 
+        BackgroundColor="LimeGreen"
+        Margin="0,20"
+        TextColor="Black" 
+        FontSize="18"
+        CornerRadius="10"
+        Clicked="NewUser_Clicked"/>
+        
+        
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

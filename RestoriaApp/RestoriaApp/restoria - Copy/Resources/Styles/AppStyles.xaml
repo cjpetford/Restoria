@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- ============================================================================= -->
+    <!--===== CREATING KEY VALUES TO BE CALLED LATER KIDNA LIKE BOOTSTRAP CLASSES =====-->
+    <Color x:Key="DarkBlue">#0D5BB3</Color>
+    <Color x:Key="LightBlue">#0F95CD</Color>
+
+    <!-- ===================================================== -->
+    <!--===== ASSIGNED VALUES TO THE KEYS CREATED EARLIER =====-->
+    <Style Class="DarkBlue" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource DarkBlue}"/>
+    </Style>
+
+    <Style Class="LightBlue" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource LightBlue}"/>
+    </Style>
+
+    <!-- ==========================================================================================-->
+    <!-- ==========================================================================================-->
+
+    <!-- ========================== -->
+    <!--===== STYLE FOR HEADER =====-->
+    <Style Class="Header" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="FontSize" Value="Title"/>
+    </Style>
+
+    <!-- ============================ -->
+    <!--===== STYLE FOR SUBTITLE =====-->
+    <Style Class="SubTitle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="FontSize" Value="Medium"/>
+    </Style>
+
+    <!-- ====================================== -->
+    <!--===== STYLE FOR CARD FOR CATERGORY =====-->
+    <Style Class="CardTitle" TargetType="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Medium"/>
+    </Style>
+
+    <!-- ========================== -->
+    <!--===== STYLE FOR SHADOW =====-->
+    <Shadow x:Key="shadow"
+            Brush="Black"
+            Opacity="0.5"
+            Radius="25"
+            Offset="10,15"/>
+
+    <!-- ======================================================= -->
+    <!--===== STYLE FOR FRAME (ROUND RECTANGLE NOT WORKING) =====-->
+    <Style Class="BoxShadow" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="BackgroundColor" Value="#F5F6F7"/>
+        <Setter Property="HasShadow" Value="True"/>
+        <Setter Property="Shadow" Value="{StaticResource shadow}"/>
+    </Style>
+
+    <!-- ================================= -->
+    <!--===== STYLE FOR NEW TASK PAGE =====-->
+    <Style x:Key="Task" TargetType="Entry">
+        <Setter Property="FontSize" Value="Title"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Placeholder" Value="{StaticResource DarkBlue}"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <!-- ========================================= -->
+    <!--===== STYLE FOR NEW TASK ON MAIN PAGE =====-->
+    <EllipseGeometry x:Key="circle"
+                     Center="50,50"
+                     RadiusX="30"
+                     RadiusY="30">        
+    </EllipseGeometry>    
+  
+    <Style x:Key="circularButton" TargetType="Button">
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HeightRequest" Value="100"/>
+        <Setter Property="WidthRequest" Value="100"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="VerticalOptions" Value="End"/>
+        <Setter Property="Clip" Value="{StaticResource circle}"/>
+    </Style>
+
+
+
+</ResourceDictionary>
