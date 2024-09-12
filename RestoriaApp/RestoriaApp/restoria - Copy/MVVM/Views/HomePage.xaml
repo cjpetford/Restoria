@@ -37,166 +37,155 @@
 
     <!-- ============================================== -->
     <!-- ================ MAIN CONTENT ================ -->
-    
-    
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~ DASHBOARD PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
-    <ContentPage Title="Home">
-        
-        <!-- =================================================== -->
-        <!-- ================ BACKGROUND COLOUR ================ -->
+
+    <ContentPage Title="Home" NavigationPage.HasNavigationBar="False">
+        <!-- Background -->
         <ContentPage.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="Azure" Offset="0.3" />
                 <GradientStop Color="#7CE9F4" Offset="1.0" />
             </LinearGradientBrush>
         </ContentPage.Background>
-        
-        <Grid> 
-            <!-- Main layout grid -->
-            <Grid>
-                <!-- Top bar -->
-                <Grid RowDefinitions="Auto,*">
-                    <!-- Top navigation buttons -->
-                    <Grid>
-                        <Grid Row="0" Padding="0,10" Margin="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!-- Dashboard button -->
-                            <Button Grid.Column="0"
-                                ImageSource="home.png"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="64"
-                                HeightRequest="64"
-                                BackgroundColor="CornflowerBlue"/>
-                            <!--Clicked="Dashboard_Button"/>-->
+        <!-- Main Layout: Use Grid for the entire page -->
+        <Grid RowDefinitions="Auto,*">
 
-                            <!-- Doctors button -->
-                            <Button Grid.Column="1"
-                                ImageSource="staffing.png"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="60"
-                                HeightRequest="60"
-                                BackgroundColor="PaleTurquoise"/>
-                            <!--Clicked="Doctors_Button"/>-->
+            <!-- ================== TOP NAVIGATION BAR ================== -->
+            <Grid Padding="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                            <!-- Booking button -->
-                            <Button Grid.Column="2"
-                                ImageSource="booking.png"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="60"
-                                HeightRequest="60"
-                                BackgroundColor="PaleTurquoise"/>
-                            <!--Clicked="Schedule_Button"/>-->
+                <!-- Dashboard button -->
+                <Button Grid.Column="0"
+                    ImageSource="home.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    BackgroundColor="CornflowerBlue"/>
+                <!-- Event handler -->
 
-                            <!-- Profile button -->
-                            <Button Grid.Column="3"
-                                ImageSource="profile.png"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="60"
-                                HeightRequest="60"
-                                BackgroundColor="PaleTurquoise"/>
-                            <!--Clicked="Profile_Button"/>-->
-                        </Grid>
-                    </Grid>
-                </Grid>
+                <!-- Doctors button -->
+                <Button Grid.Column="1"
+                    ImageSource="staffing.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    BackgroundColor="PaleTurquoise"/>
+                <!-- Event handler -->
 
-                <Grid RowDefinitions="*,Auto,*">
-                    <!-- A Spacer -->
-                    <Grid Row="0"/>
+                <!-- Booking button -->
+                <Button Grid.Column="2"
+                    ImageSource="booking.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    BackgroundColor="PaleTurquoise"/>
+                <!-- Event handler -->
 
-                    <!-- Placeholder text currently -->
-                    <StackLayout Padding="10,50,10,10">
-                        <Label Text="Welcome back, placeholder_role placeholder_name"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TranslationY="55"/>
-                    </StackLayout>
-                </Grid>
+                <!-- Profile button -->
+                <Button Grid.Column="3"
+                    ImageSource="profile.png"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    BackgroundColor="PaleTurquoise"/>
+                <!-- Event handler -->
+            </Grid>
 
+            <!-- ================== CONTENT SCROLL VIEW ================== -->
+            <ScrollView Grid.Row="1" Padding="15">
+                <StackLayout>
+                    <!-- Upcoming Bookings Section -->
+                    <Label Text="Upcoming Bookings" Style="{StaticResource TitleStyle}" Margin="0,10,0,20"/>
+                    <Frame BackgroundColor="White" BorderColor="LightGray" Padding="20">
+                        <StackLayout>
+                            <Label Text="Doctor: Dr. Smith" FontSize="Medium" />
+                            <Label Text="Date: 12th September 2024" FontSize="Medium" />
+                            <Label Text="Time: 10:30 AM" FontSize="Medium" />
+                            <Button Text="Cancel" BorderColor="Red" CornerRadius="10" BackgroundColor="Pink" TextColor="Black" />
+                        </StackLayout>
+                    </Frame>
 
-                <!-- ================== MENU (LEFT) =================== -->
-                <StackLayout Grid.Row="0" Grid.Column="0" Padding="10" BackgroundColor="White">
-                    <Button Text="☰" FontSize="Large" Clicked="OnMenuToggleClicked" />
+                    <!-- Questionnaire -->
+                    <Label Text="Questionnaire" Style="{StaticResource TitleStyle}" Margin="0,40,0,10" />
+                    <StackLayout Padding="10">
+                        <Label Text="Are you feeling sick?" FontSize="Medium" />
+                        <Switch OnColor="CornflowerBlue" />
 
-                    <StackLayout x:Name="MenuItems" IsVisible="False">
-                        <Button Text="Terms and Conditions" Clicked="NavigateToTerms"/>
-                        <Button Text="Privacy Policy" Clicked="NavigateToPrivacy"/>
-                        <Button Text="Empty Link" Clicked="NewFeature"/>
-                        <!-- Future feature -->
-                    </StackLayout>
-                
-
-                <!-- ================== RIGHT CONTENT ================== -->
-                <ScrollView Grid.Row="0" Grid.Column="1" Padding="10">
-                    <StackLayout>
-
-                        <!-- Upcoming Bookings Section -->
-                        <Label Text="Upcoming Bookings" Style="{StaticResource TitleStyle}" />
-                        <Frame BackgroundColor="White" BorderColor="LightGray" Padding="10">
-                            <StackLayout>
-                                <Label Text="Doctor: Dr. Smith" FontSize="Medium" />
-                                <Label Text="Date: 12th September 2024" FontSize="Medium" />
-                                <Label Text="Time: 10:30 AM" FontSize="Medium" />
-                                <Button Text="Cancel" BackgroundColor="Red" TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-
-                        <!-- ================== Questionnaire =================== -->
-                        <Label Text="Questionnaire" Style="{StaticResource TitleStyle}" Margin="0,20,0,10" />
-                        <StackLayout Padding="10">
-                            <Label Text="Are you feeling sick?" FontSize="Medium" />
-                            <Switch />
-
-                            <Label Text="Common Symptoms:" FontSize="Medium" Margin="0,10,0,0" />
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <CheckBox x:Name="FeverCheckBox" />
-                                    <Label Text="Fever" VerticalOptions="Center" />
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <CheckBox x:Name="CoughCheckBox" />
-                                    <Label Text="Cough" VerticalOptions="Center" />
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <CheckBox x:Name="SoreThroatCheckBox" />
-                                    <Label Text="Sore throat" VerticalOptions="Center" />
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <CheckBox x:Name="HeadacheCheckBox" />
-                                    <Label Text="Headache" VerticalOptions="Center" />
-                                </StackLayout>
+                        <Label Text="Common Symptoms:" FontSize="Medium" Margin="0,10,0,0" />
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="FeverCheckBox" />
+                                <Label Text="Fever" VerticalOptions="Center" />
                             </StackLayout>
 
-                            <Button Text="Book Appointment" BackgroundColor="#007ACC" TextColor="White" Margin="0,20,0,0"/>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="CoughCheckBox" />
+                                <Label Text="Cough" VerticalOptions="Center" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="SoreThroatCheckBox" />
+                                <Label Text="Sore throat" VerticalOptions="Center" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="HeadacheCheckBox" />
+                                <Label Text="Headache" VerticalOptions="Center" />
+                            </StackLayout>
                         </StackLayout>
 
+                        <Button Text="Book Appointment" BackgroundColor="CornflowerBlue" TextColor="Black" Margin="0,20,0,0"/>
                     </StackLayout>
-                </ScrollView>
                 </StackLayout>
+            </ScrollView>
 
-            </Grid>
+            <!-- ================== HOVER BUTTON AND MENU ================== -->
+            <AbsoluteLayout Grid.Row="1">
+                <!-- Hover menu items -->
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="1, 1"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="End"
+                                 Padding="10"
+                                 Margin="0, 0, 13, 80"
+                                 Spacing="5"
+                                 IsVisible="False"
+                                 x:Name="HoverButtonContainer">
+                    <Button Text="Terms and Conditions" TextColor="Black" BackgroundColor="CornflowerBlue" Clicked="NavigateToTerms"/>
+                    <Button Text="Privacy Policy" TextColor="Black" BackgroundColor="CornflowerBlue" Clicked="NavigateToPrivacy"/>
+                    <Button Text="Empty Link" TextColor="Black" BackgroundColor="CornflowerBlue" Clicked="NewFeature"/>
+                </VerticalStackLayout>
+
+                <!-- Floating hover button -->
+                <Button AbsoluteLayout.LayoutBounds="1, 1"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Text=" > "
+                    TextColor="Black"
+                    x:Name="HoverBtn"
+                    BackgroundColor="CornflowerBlue"
+                    Clicked="HoverBtn_Clicked"
+                    Padding="20"
+                    Margin="25"
+                    CornerRadius="20"/>
+            </AbsoluteLayout>
+
         </Grid>
+
     </ContentPage>
-    <!-- ~~~~~~~~~~~~~~~~~ DASHBOARD PAGE TAB END ~~~~~~~~~~~~~~~~~ -->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!-- ~~~~~~~~~~~~~~~~~ DOCTORS PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
-    <ContentPage Title="Doctors">
+    <ContentPage Title="Doctors" NavigationPage.HasNavigationBar="False">
         <!-- Main layout grid -->
         <Grid>
             <Grid>
@@ -309,7 +298,7 @@
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!-- ~~~~~~~~~~~~~~~~~ BOOKING PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
-    <ContentPage Title="Booking">
+    <ContentPage Title="Booking" NavigationPage.HasNavigationBar="False">
         <!-- Main layout grid -->
         <Grid>
             <Grid>
@@ -450,7 +439,7 @@
 
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!-- ~~~~~~~~~~~~~~~~~ PROFILE PAGE TAB START ~~~~~~~~~~~~~~~~~ -->
-    <ContentPage Title="Profile">
+    <ContentPage Title="Profile" NavigationPage.HasNavigationBar="False">
         <!-- Main layout grid -->
         <Grid>
             <Grid>

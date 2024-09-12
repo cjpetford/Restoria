@@ -29,6 +29,51 @@ public partial class HomePage : MauiTabbedPage
             await _viewModel.LoadDoctorsAsync();
         });
     }
+
+
+    private bool _rotated = false;
+
+    private async void HoverBtn_Clicked(object sender, EventArgs e)
+    {
+        // Rotate the button
+        await ((Button)sender).RotateTo(_rotated ? 0 : -90);
+
+        // Define the initial or current margin based on _rotated state
+        Thickness startMargin = new Thickness(0, 0, _rotated ? 0 : 100, 80); // Start off-screen to the right
+        Thickness endMargin = new Thickness(0, 0, _rotated ? 100 : 13, 80); // End at the visible position
+
+        // Update the visibility of the HoverButtonContainer
+        HoverButtonContainer.IsVisible = !HoverButtonContainer.IsVisible;
+
+        // Adjust the margin directly before animating
+        HoverButtonContainer.Margin = startMargin;
+
+        // Perform the animation
+        HoverButtonContainer.Animate<Thickness>("fab_btns",
+            value => // Animation progress goes from 0 -> 1
+            {
+                int factor = Convert.ToInt32(value * 10);
+
+                // Adjust the right margin based on the factor and the rotated state
+                var rightMargin = !_rotated ? (factor * 10) - 100 : (factor * 10) * -1;
+
+                // Return the updated margin
+                return new Thickness(0, 0, rightMargin, 80);
+            },
+            newThickness => HoverButtonContainer.Margin = newThickness, // Apply the margin during the animation
+            length: 250,
+            finished: (_, __) =>
+            {
+                _rotated = !_rotated;
+
+                // Store the final margin after animation ends to preserve it for the next toggle
+                HoverButtonContainer.Margin = endMargin;
+            });
+    }
+
+
+
+
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
@@ -85,11 +130,6 @@ public partial class HomePage : MauiTabbedPage
     private void Profile_Button(object sender, EventArgs e)
     {
         SwitchToProfileTab(); // Switches to specified tab
-    }
-
-    private void OnMenuToggleClicked(object sender, EventArgs e)
-    {
-        MenuItems.IsVisible = !MenuItems.IsVisible;
     }
 
     private async void NavigateToTerms(object sender, EventArgs e)
